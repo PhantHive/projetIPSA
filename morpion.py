@@ -12,8 +12,6 @@ canvas = tk.Canvas(app, width=700, height=700)
 canvas.pack()
 
 #Fonctions
-
-
 def boardCreate():
     #Vertical lines
     canvas.create_line(260, 300, 500, -100000, width = 10, fill="black") #vertical line 1
@@ -31,11 +29,24 @@ def boardCreate():
     canvas.create_line(150, 0, 480, 0, width=10, fill="orange") #top
     canvas.create_line(146, 305, 485, 305, width=10, fill="orange") #bottom
 
+def crossCreate(x, y):
+    canvas.create_line(x-35, y-35, x+35, y+35, width = 5, fill = "red")
+    canvas.create_line(x-35, y+35, x+35, y-35, width = 5, fill = "blue")
+
+def circleCreate(x, y):
+    return
+
+
 def initialisation():
     gamesNb = nb.get()
-    if (gamesNb != 0):
+
+    if (gamesNb > 5):
+        nb.set("No life! joue -!")
+    elif (gamesNb > 0):
         boardCreate()
-        
+        #startGame()
+    else:
+        nb.set("WHUT")
 
 #Entry
 
