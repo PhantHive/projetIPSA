@@ -8,7 +8,7 @@ app.title("MORPION")
 
 
 #Canvas
-canvas = tk.Canvas(app, width=700, height=700)
+canvas = tk.Canvas(app, width=700, height=700, relief="raised")
 canvas.pack()
 
 #Fonctions
@@ -26,8 +26,11 @@ def boardCreate():
     canvas.create_line(150, 300, 255, -100000, width=10, fill="orange") #left
     canvas.create_line(480, 300, 255, -100000, width=10, fill="orange") #right
     #Horizontal lines
-    canvas.create_line(150, 0, 480, 0, width=10, fill="orange") #top
+    canvas.create_line(150, 7, 480, 7, width=10, fill="orange") #top
     canvas.create_line(146, 305, 485, 305, width=10, fill="orange") #bottom
+def startGame():
+    boardGame = [0]*9
+
 
 def crossCreate(x, y):
     canvas.create_line(x-35, y-35, x+35, y+35, width = 5, fill = "red")
@@ -44,7 +47,8 @@ def initialisation():
         nb.set("No life! joue -!")
     elif (gamesNb > 0):
         boardCreate()
-        #startGame()
+        startGame()
+
     else:
         nb.set("WHUT")
 
@@ -55,11 +59,9 @@ nbMatch = tk.Entry(app, textvariable=nb)
 nb.set("Max 5")
 nbMatch.place(x=250, y=350)
 
-
-
-
 #Labels
 
+#resultatGame = tk.Label(app, text="SCORE: ")
 
 #Bottom
 matchValidate = tk.Button(app, text="Valider", command=initialisation)
