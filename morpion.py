@@ -14,7 +14,6 @@ app.title("MORPION")
 
 #Fonctions
 def gameOpen():
-
     global b1
     global b2
     global b3
@@ -24,11 +23,12 @@ def gameOpen():
     global b7
     global b8
     global b9
-
+    global win
 
     game = tk.Toplevel()
     # customs window
     game.geometry("650x650")
+
 
     canvas = tk.Canvas(game, width=700, height=700, relief="raised")
     canvas.pack()
@@ -89,6 +89,10 @@ def gameOpen():
     b9 = tk.Button(game,text= " ", width=13, height=5, bg="#7bb1ef", command=lambda: startGame(b9))
     b9.place(x=375, y=215)
 
+    #Label Winner
+
+    win = tk.Label(game, text=" ")
+    win.place(x=240, y=500)
 
 
 #global settings
@@ -102,18 +106,20 @@ def startGame(b):
     global x,y
     global player1, player2
     global click
+    global diffMode
+    #global game
+    #global win
 
 
     playerStart = 1
     if playerStart == 1:
-
         #b1
         if b == b1:
             if b1["text"] == " " and click == True:
                 y = 'X'
                 b1.config(text=y)
                 click = False
-             #bot's strategy
+                #bot's strategy
                 if b7["text"] == 'X' and b4["text"] == " ":
                     y = 'O'
                     b4.config(text=y)
@@ -536,7 +542,6 @@ def startGame(b):
                     click = True
                 else:
                     y = 'O'
-
                     if b5["text"] == " ":
                         b5.config(text=y)
                         click = True
@@ -630,71 +635,104 @@ def startGame(b):
             b3["text"] == 'X' and b6["text"] == 'X' and b9["text"] == 'X' or
             b7["text"] == 'X' and b8["text"] == 'X' and b9["text"] == 'X' or
             b4["text"] == 'X' and b5["text"] == 'X' and b6["text"] == 'X'):
-                tk.messagebox.showinfo("GG", "Tu m'impressionnes!")
+                win.config(text="GG, Tu m'impressionnes!")
 
+        #Vertical Verif
+        if b1["text"] == 'O' and b4["text"] == 'O' and b7["text"] == 'O':
+                b1.config(bg='red')
+                b4.config(bg='red')
+                b7.config(bg='red')
+                win.set(text="Dommage, Bot a gagne!")
+
+        if b2["text"] == 'O' and b5["text"] == 'O' and b8["text"] == 'O':
+                b2.config(bg='red')
+                b5.config(bg='red')
+                b8.config(bg='red')
+                win.config(text="Dommage, Bot a gagne!")
+
+        if b3["text"] == 'O' and b6["text"] == 'O' and b9["text"] == 'O':
+                b3.config(bg='red')
+                b6.config(bg='red')
+                b9.config(bg='red')
+                win.config(text="Dommage, Bot a gagne!")
+
+
+        #Diagonal Verif
+        if b1["text"] == 'O' and b5["text"] == 'O' and b9["text"] == 'O':
+                b1.config(bg='red')
+                b5.config(bg='red')
+                b9.config(bg='red')
+                win.config(text="Dommage Bot a gagne!")
+
+        if b3["text"] == 'O' and b5["text"] == 'O' and b7["text"] == 'O':
+                b3.config(bg='red')
+                b5.config(bg='red')
+                b7.config(bg='red')
+                win.config(text="Dommage Bot a gagne!")
+
+
+
+        #Horizontal verif
         if b1["text"] == 'O' and b2["text"] == 'O' and b3["text"] == 'O':
             b1.config(bg='red')
             b2.config(bg='red')
             b3.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b1["text"] == 'O' and b5["text"] == 'O' and b9["text"] == 'O':
-            b1.config(bg='red')
-            b5.config(bg='red')
-            b9.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b1["text"] == 'O' and b4["text"] == 'O' and b7["text"] == 'O':
-            b1.config(bg='red')
-            b4.config(bg='red')
-            b7.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b1["text"] == 'O' and b5["text"] == 'O' and b7["text"] == 'O':
-            b1.config(bg='red')
-            b5.config(bg='red')
-            b7.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b3["text"] == 'O' and b6["text"] == 'O' and b9["text"] == 'O':
-            b3.config(bg='red')
-            b6.config(bg='red')
-            b9.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b7["text"] == 'O' and b8["text"] == 'O' and b9["text"] == 'O':
-            b7.config(bg='red')
-            b8.config(bg='red')
-            b9.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
-        if b4["text"] == 'O' and b5["text"] == 'O' and b6["text"] == 'O':
-            b4.config(bg='red')
-            b5.config(bg='red')
-            b6.config(bg='red')
-            tk.messagebox.showinfo("Dommage", "Bot a gagne!")
+            win.config(text="Dommage, Bot a gagne!")
 
+        if b4["text"] == 'O' and b5["text"] == 'O' and b6["text"] == 'O':
+                b4.config(bg='red')
+                b5.config(bg='red')
+                b6.config(bg='red')
+                win.set(text="Dommage, Bot a gagne!")
+
+        if b7["text"] == 'O' and b8["text"] == 'O' and b9["text"] == 'O':
+                b7.config(bg='red')
+                b8.config(bg='red')
+                b9.config(bg='red')
+                win.config(text="Dommage, Bot a gagne!")
+
+        #draw
         if (b1["text"] != " " and b2["text"] != " " and b3["text"] != " " and
             b4["text"] != " " and b5["text"] != " " and b6["text"] != " " and
             b7["text"] != " " and b8["text"] != " " and b9["text"] != " "):
-                tk.messagebox.showinfo("egalite!", "Match fini en egalite")
+                win.config(text="egalite! Match fini en egalite")
+
+
+
+
 
 def initialisation():
+    global gamesNb
     gamesNb = nb.get()
+    diffMode = df.get()
 
-    if (gamesNb > 5):
-        nb.set("No life! joue -!")
-    elif (gamesNb > 0):
-        gameOpen()
-
+    lDf = ["facile", "moyen", "difficile", "extreme"]
+    if diffMode in lDf:
+        if (gamesNb > 5):
+            nb.set("No life! joue -!")
+        elif (gamesNb > 0):
+            gameOpen()
+        else:
+            nb.set("WHUT")
     else:
-        nb.set("WHUT")
+        df.set("error")
 
 
-#Entry
+#EntryVariable
 nb = tk.IntVar()
+df = tk.StringVar()
 
 #number of match
 nbMatch = tk.Entry(app, textvariable=nb)
 nb.set("1-5")
 nbMatch.place(x=250, y=350)
+
 #Difficulty status
-#difficulty = tk.Entry(app, textvariable=df)
-#df.set("facile-moyen-difficile-extreme")
+
+
+difficulty = tk.Entry(app, textvariable=df)
+df.set("facile-moyen-difficile-extreme")
+difficulty.place(x=250, y=380)
 
 
 #Labels
