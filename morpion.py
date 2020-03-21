@@ -114,7 +114,11 @@ def startGame(b):
                 b1.config(text=y)
                 click = False
              #bot's strategy
-                if b2["text"] == 'X' and b3["text"] == " ":
+                if b7["text"] == 'X' and b4["text"] == " ":
+                    y = 'O'
+                    b4.config(text=y)
+                    click = True
+                elif b2["text"] == 'X' and b3["text"] == " ":
                     y = 'O'
                     b3.config(text=y)
                     click = True
@@ -129,10 +133,6 @@ def startGame(b):
                 elif b5["text"] == 'X' and b9["text"] == " ":
                     y = 'O'
                     b9.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b4["text"] == " ":
-                    y = 'O'
-                    b4.config(text=y)
                     click = True
                 elif b9["text"] == 'X' and b5["text"] == " ":
                     y = 'O'
@@ -311,7 +311,7 @@ def startGame(b):
                     if b5["text"] == " ":
                         b5.config(text=y)
                         click = True
-                    if b1["text"] == " ":
+                    elif b1["text"] == " ":
                         b1.config(text=y)
                         click = True
                     elif b3["text"] == " ":
@@ -687,9 +687,15 @@ def initialisation():
 
 #Entry
 nb = tk.IntVar()
+
+#number of match
 nbMatch = tk.Entry(app, textvariable=nb)
-nb.set("Max 5")
+nb.set("1-5")
 nbMatch.place(x=250, y=350)
+#Difficulty status
+#difficulty = tk.Entry(app, textvariable=df)
+#df.set("facile-moyen-difficile-extreme")
+
 
 #Labels
 
