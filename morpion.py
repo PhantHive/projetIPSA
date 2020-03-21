@@ -24,6 +24,7 @@ def gameOpen():
     global b8
     global b9
     global win
+    global game
 
     game = tk.Toplevel()
     # customs window
@@ -94,6 +95,8 @@ def gameOpen():
     win = tk.Label(game, text=" ")
     win.place(x=240, y=500)
 
+def CloseBoard():
+    game.destroy()
 
 #global settings
 y = "" #sign attribution
@@ -110,592 +113,601 @@ def startGame(b):
     #global game
     #global win
 
+    i = gamesNb
+    print(gamesNb)
 
-    playerStart = 1
-    if playerStart == 1:
-        #b1
-        if b == b1:
-            if b1["text"] == " " and click == True:
-                y = 'X'
-                b1.config(text=y)
-                click = False
-                #bot's strategy
-                if b7["text"] == 'X' and b4["text"] == " ":
-                    y = 'O'
-                    b4.config(text=y)
-                    click = True
-                elif b2["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
-                    b3.config(text=y)
-                    click = True
-                elif b3["text"] == 'X' and b2["text"] == " ":
-                    y = 'O'
+    if gamesNb == 0:
+        print("end")
+    else:
+        playerStart = 1
+        if playerStart == 1:
+            #b1
+            if b == b1:
+                if b1["text"] == " " and click == True:
+                    y = 'X'
+                    b1.config(text=y)
+                    click = False
+                    #bot's strategy
+                    if b7["text"] == 'X' and b4["text"] == " ":
+                        y = 'O'
+                        b4.config(text=y)
+                        click = True
+                    elif b2["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
+                        b3.config(text=y)
+                        click = True
+                    elif b3["text"] == 'X' and b2["text"] == " ":
+                        y = 'O'
+                        b2.config(text=y)
+                        click = True
+                    elif b4["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
+                        b7.config(text=y)
+                        click = True
+                    elif b5["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
+                        b9.config(text=y)
+                        click = True
+                    elif b9["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+
+            elif b == b2:
+                #b2
+                if b2["text"] == " " and click == True:
+                    y = 'X'
                     b2.config(text=y)
-                    click = True
-                elif b4["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
+                    click = False
+
+                    #botStrat
+                    if b1["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
                         b3.config(text=y)
                         click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
+                    elif b3["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
+                        b1.config(text=y)
                         click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
-                        b6.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
+                    elif b5["text"] == 'X' and b8["text"] == " ":
+                        y = 'O'
                         b8.config(text=y)
                         click = True
+                    elif b8["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
 
-        elif b == b2:
-            #b2
-            if b2["text"] == " " and click == True:
-                y = 'X'
-                b2.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
+            elif b == b3:
+                #b3
+                if b3["text"] == " " and click == True:
+                    y = 'X'
                     b3.config(text=y)
-                    click = True
-                elif b3["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b8["text"] == " ":
-                    y = 'O'
-                    b8.config(text=y)
-                    click = True
-                elif b8["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
-                        b6.config(text=y)
-                        click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
+                    click = False
 
-        elif b == b3:
-            #b3
-            if b3["text"] == " " and click == True:
-                y = 'X'
-                b3.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b2["text"] == " ":
-                    y = 'O'
-                    b2.config(text=y)
-                    click = True
-                elif b2["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                elif b6["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b6["text"] == " ":
-                    y = 'O'
-                    b6.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-                    elif b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
-                        b6.config(text=y)
-                        click = True
-                    elif b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
+                    #botStrat
+                    if b1["text"] == 'X' and b2["text"] == " ":
+                        y = 'O'
                         b2.config(text=y)
                         click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-
-        elif b == b4:
-            #b4
-            if b4["text"] == " " and click == True:
-                y = 'X'
-                b4.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b6["text"] == " ":
-                    y = 'O'
-                    b6.config(text=y)
-                    click = True
-                elif b6["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b1["text"] == " ":
+                    elif b2["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
                         b1.config(text=y)
                         click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b7["text"] == " ":
+                    elif b5["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
                         b7.config(text=y)
                         click = True
-                    elif b9["text"] == " ":
+                    elif b6["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
                         b9.config(text=y)
                         click = True
-                    elif b6["text"] == " ":
+                    elif b7["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    elif b9["text"] == 'X' and b6["text"] == " ":
+                        y = 'O'
                         b6.config(text=y)
                         click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
 
-        elif b == b5:
-            #b5
-            if b5["text"] == " " and click == True:
-                y = 'X'
-                b5.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b3["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                elif b2["text"] == 'X' and b8["text"] == " ":
-                    y = 'O'
-                    b8.config(text=y)
-                    click = True
-                elif b4["text"] == 'X' and b6["text"] == " ":
-                    y = 'O'
-                    b6.config(text=y)
-                    click = True
-                elif b6["text"] == 'X' and b4["text"] == " ":
-                    y = 'O'
+            elif b == b4:
+                #b4
+                if b4["text"] == " " and click == True:
+                    y = 'X'
                     b4.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
-                    b3.config(text=y)
-                    click = True
-                elif b8["text"] == 'X' and b2["text"] == " ":
-                    y = 'O'
-                    b2.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
-                        b6.config(text=y)
-                        click = True
-                    elif  b7["text"] == " ":
+                    click = False
+
+                    #botStrat
+                    if b1["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
                         b7.config(text=y)
                         click = True
-                    elif  b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-                    elif  b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-
-        elif b == b6:
-            #b6
-            if b6["text"] == " " and click == True:
-                y = 'X'
-                b6.config(text=y)
-                click = False
-
-                #botStrat
-                if b3["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b4["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b4["text"] == " ":
-                    y = 'O'
-                    b4.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
-                    b3.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
-                        click = True
-                    elif b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-
-        elif b == b7:
-            #b7
-            if b7["text"] == " " and click == True:
-                y = 'X'
-                b7.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b4["text"] == " ":
-                    y = 'O'
-                    b4.config(text=y)
-                    click = True
-                elif b3["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b4["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
-                    b3.config(text=y)
-                    click = True
-                elif b8["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b8["text"] == " ":
-                    y = 'O'
-                    b8.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
-                        b5.config(text=y)
-                        click = True
-                    elif  b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
+                    elif b5["text"] == 'X' and b6["text"] == " ":
+                        y = 'O'
                         b6.config(text=y)
                         click = True
-
-        elif b == b8:
-            #b8
-            if b8["text"] == " " and click == True:
-                y = 'X'
-                b8.config(text=y)
-                click = False
-
-                #botStrat
-                if b2["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b2["text"] == " ":
-                    y = 'O'
-                    b2.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b9["text"] == " ":
-                    y = 'O'
-                    b9.config(text=y)
-                    click = True
-                elif b9["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
+                    elif b6["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
                         b5.config(text=y)
                         click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b9["text"] == " ":
-                        b9.config(text=y)
-                        click = True
-                    elif b1["text"] == " ":
+                    elif b7["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
                         b1.config(text=y)
                         click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
+
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+
+            elif b == b5:
+                #b5
+                if b5["text"] == " " and click == True:
+                    y = 'X'
+                    b5.config(text=y)
+                    click = False
+
+                    #botStrat
+                    if b1["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
+                        b9.config(text=y)
                         click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
+                    elif b3["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
+                        b7.config(text=y)
                         click = True
-                    elif b4["text"] == " ":
-                        b4.config(text=y)
+                    elif b2["text"] == 'X' and b8["text"] == " ":
+                        y = 'O'
+                        b8.config(text=y)
                         click = True
-                    elif b6["text"] == " ":
+                    elif b4["text"] == 'X' and b6["text"] == " ":
+                        y = 'O'
                         b6.config(text=y)
                         click = True
+                    elif b6["text"] == 'X' and b4["text"] == " ":
+                        y = 'O'
+                        b4.config(text=y)
+                        click = True
+                    elif b7["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
+                        b3.config(text=y)
+                        click = True
+                    elif b8["text"] == 'X' and b2["text"] == " ":
+                        y = 'O'
+                        b2.config(text=y)
+                        click = True
+                    elif b9["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
+                        b1.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif  b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif  b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+                        elif  b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
 
-        elif b == b9:
-            #b9
-            if b9["text"] == " " and click == True:
-                y = 'X'
-                b9.config(text=y)
-                click = False
-
-                #botStrat
-                if b1["text"] == 'X' and b5["text"] == " ":
-                    y = 'O'
-                    b5.config(text=y)
-                    click = True
-                elif b3["text"] == 'X' and b6["text"] == " ":
-                    y = 'O'
+            elif b == b6:
+                #b6
+                if b6["text"] == " " and click == True:
+                    y = 'X'
                     b6.config(text=y)
-                    click = True
-                elif b5["text"] == 'X' and b1["text"] == " ":
-                    y = 'O'
-                    b1.config(text=y)
-                    click = True
-                elif b7["text"] == 'X' and b8["text"] == " ":
-                    y = 'O'
-                    b8.config(text=y)
-                    click = True
-                elif b8["text"] == 'X' and b7["text"] == " ":
-                    y = 'O'
-                    b7.config(text=y)
-                    click = True
-                elif b6["text"] == 'X' and b3["text"] == " ":
-                    y = 'O'
-                    b6.config(text=y)
-                    click = True
-                else:
-                    y = 'O'
-                    if b5["text"] == " ":
+                    click = False
+
+                    #botStrat
+                    if b3["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
+                        b9.config(text=y)
+                        click = True
+                    elif b4["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
                         b5.config(text=y)
                         click = True
-                    elif b1["text"] == " ":
-                        b1.config(text=y)
-                        click = True
-                    elif b3["text"] == " ":
-                        b3.config(text=y)
-                        click = True
-                    elif b6["text"] == " ":
-                        b6.config(text=y)
-                        click = True
-                    elif b7["text"] == " ":
-                        b7.config(text=y)
-                        click = True
-                    elif b8["text"] == " ":
-                        b8.config(text=y)
-                        click = True
-                    elif b2["text"] == " ":
-                        b2.config(text=y)
-                        click = True
-                    elif b4["text"] == " ":
+                    elif b5["text"] == 'X' and b4["text"] == " ":
+                        y = 'O'
                         b4.config(text=y)
                         click = True
+                    elif b9["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
+                        b3.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
 
-        #winner check
+            elif b == b7:
+                #b7
+                if b7["text"] == " " and click == True:
+                    y = 'X'
+                    b7.config(text=y)
+                    click = False
 
-        if (b1["text"] == 'X' and b2["text"] == 'X' and b3["text"] == 'X' or
-            b1["text"] == 'X' and b5["text"] == 'X' and b9["text"] == 'X' or
-            b1["text"] == 'X' and b4["text"] == 'X' and b7["text"] == 'X' or
-            b3["text"] == 'X' and b5["text"] == 'X' and b7["text"] == 'X' or
-            b3["text"] == 'X' and b6["text"] == 'X' and b9["text"] == 'X' or
-            b7["text"] == 'X' and b8["text"] == 'X' and b9["text"] == 'X' or
-            b4["text"] == 'X' and b5["text"] == 'X' and b6["text"] == 'X'):
-                win.config(text="GG, Tu m'impressionnes!")
+                    #botStrat
+                    if b1["text"] == 'X' and b4["text"] == " ":
+                        y = 'O'
+                        b4.config(text=y)
+                        click = True
+                    elif b3["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    elif b4["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
+                        b1.config(text=y)
+                        click = True
+                    elif b5["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
+                        b3.config(text=y)
+                        click = True
+                    elif b8["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
+                        b9.config(text=y)
+                        click = True
+                    elif b9["text"] == 'X' and b8["text"] == " ":
+                        y = 'O'
+                        b8.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif  b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
 
-        #Vertical Verif
-        if b1["text"] == 'O' and b4["text"] == 'O' and b7["text"] == 'O':
+            elif b == b8:
+                #b8
+                if b8["text"] == " " and click == True:
+                    y = 'X'
+                    b8.config(text=y)
+                    click = False
+
+                    #botStrat
+                    if b2["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    elif b5["text"] == 'X' and b2["text"] == " ":
+                        y = 'O'
+                        b2.config(text=y)
+                        click = True
+                    elif b7["text"] == 'X' and b9["text"] == " ":
+                        y = 'O'
+                        b9.config(text=y)
+                        click = True
+                    elif b9["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
+                        b7.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b9["text"] == " ":
+                            b9.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+
+            elif b == b9:
+                #b9
+                if b9["text"] == " " and click == True:
+                    y = 'X'
+                    b9.config(text=y)
+                    click = False
+
+                    #botStrat
+                    if b1["text"] == 'X' and b5["text"] == " ":
+                        y = 'O'
+                        b5.config(text=y)
+                        click = True
+                    elif b3["text"] == 'X' and b6["text"] == " ":
+                        y = 'O'
+                        b6.config(text=y)
+                        click = True
+                    elif b5["text"] == 'X' and b1["text"] == " ":
+                        y = 'O'
+                        b1.config(text=y)
+                        click = True
+                    elif b7["text"] == 'X' and b8["text"] == " ":
+                        y = 'O'
+                        b8.config(text=y)
+                        click = True
+                    elif b8["text"] == 'X' and b7["text"] == " ":
+                        y = 'O'
+                        b7.config(text=y)
+                        click = True
+                    elif b6["text"] == 'X' and b3["text"] == " ":
+                        y = 'O'
+                        b6.config(text=y)
+                        click = True
+                    else:
+                        y = 'O'
+                        if b5["text"] == " ":
+                            b5.config(text=y)
+                            click = True
+                        elif b1["text"] == " ":
+                            b1.config(text=y)
+                            click = True
+                        elif b3["text"] == " ":
+                            b3.config(text=y)
+                            click = True
+                        elif b6["text"] == " ":
+                            b6.config(text=y)
+                            click = True
+                        elif b7["text"] == " ":
+                            b7.config(text=y)
+                            click = True
+                        elif b8["text"] == " ":
+                            b8.config(text=y)
+                            click = True
+                        elif b2["text"] == " ":
+                            b2.config(text=y)
+                            click = True
+                        elif b4["text"] == " ":
+                            b4.config(text=y)
+                            click = True
+
+            #winner check
+
+            if (b1["text"] == 'X' and b2["text"] == 'X' and b3["text"] == 'X' or
+                b1["text"] == 'X' and b5["text"] == 'X' and b9["text"] == 'X' or
+                b1["text"] == 'X' and b4["text"] == 'X' and b7["text"] == 'X' or
+                b3["text"] == 'X' and b5["text"] == 'X' and b7["text"] == 'X' or
+                b3["text"] == 'X' and b6["text"] == 'X' and b9["text"] == 'X' or
+                b7["text"] == 'X' and b8["text"] == 'X' and b9["text"] == 'X' or
+                b4["text"] == 'X' and b5["text"] == 'X' and b6["text"] == 'X'):
+                    win.config(text="GG, Tu m'impressionnes!")
+
+            #Vertical Verif
+            if b1["text"] == 'O' and b4["text"] == 'O' and b7["text"] == 'O':
+                    b1.config(bg='red')
+                    b4.config(bg='red')
+                    b7.config(bg='red')
+                    win.set(text="Dommage, Bot a gagne!")
+
+            if b2["text"] == 'O' and b5["text"] == 'O' and b8["text"] == 'O':
+                    b2.config(bg='red')
+                    b5.config(bg='red')
+                    b8.config(bg='red')
+                    win.config(text="Dommage, Bot a gagne!")
+
+            if b3["text"] == 'O' and b6["text"] == 'O' and b9["text"] == 'O':
+                    b3.config(bg='red')
+                    b6.config(bg='red')
+                    b9.config(bg='red')
+                    win.config(text="Dommage, Bot a gagne!")
+
+
+            #Diagonal Verif
+            if b1["text"] == 'O' and b5["text"] == 'O' and b9["text"] == 'O':
+                    b1.config(bg='red')
+                    b5.config(bg='red')
+                    b9.config(bg='red')
+                    win.config(text="Dommage Bot a gagne!")
+
+            if b3["text"] == 'O' and b5["text"] == 'O' and b7["text"] == 'O':
+                    b3.config(bg='red')
+                    b5.config(bg='red')
+                    b7.config(bg='red')
+                    win.config(text="Dommage Bot a gagne!")
+
+
+
+            #Horizontal verif
+            if b1["text"] == 'O' and b2["text"] == 'O' and b3["text"] == 'O':
                 b1.config(bg='red')
-                b4.config(bg='red')
-                b7.config(bg='red')
-                win.set(text="Dommage, Bot a gagne!")
-
-        if b2["text"] == 'O' and b5["text"] == 'O' and b8["text"] == 'O':
                 b2.config(bg='red')
-                b5.config(bg='red')
-                b8.config(bg='red')
-                win.config(text="Dommage, Bot a gagne!")
-
-        if b3["text"] == 'O' and b6["text"] == 'O' and b9["text"] == 'O':
                 b3.config(bg='red')
-                b6.config(bg='red')
-                b9.config(bg='red')
                 win.config(text="Dommage, Bot a gagne!")
 
+            if b4["text"] == 'O' and b5["text"] == 'O' and b6["text"] == 'O':
+                    b4.config(bg='red')
+                    b5.config(bg='red')
+                    b6.config(bg='red')
+                    win.config(text="Dommage, Bot a gagne!")
 
-        #Diagonal Verif
-        if b1["text"] == 'O' and b5["text"] == 'O' and b9["text"] == 'O':
-                b1.config(bg='red')
-                b5.config(bg='red')
-                b9.config(bg='red')
-                win.config(text="Dommage Bot a gagne!")
+            if b7["text"] == 'O' and b8["text"] == 'O' and b9["text"] == 'O':
+                    b7.config(bg='red')
+                    b8.config(bg='red')
+                    b9.config(bg='red')
+                    win.config(text="Dommage, Bot a gagne!")
 
-        if b3["text"] == 'O' and b5["text"] == 'O' and b7["text"] == 'O':
-                b3.config(bg='red')
-                b5.config(bg='red')
-                b7.config(bg='red')
-                win.config(text="Dommage Bot a gagne!")
-
-
-
-        #Horizontal verif
-        if b1["text"] == 'O' and b2["text"] == 'O' and b3["text"] == 'O':
-            b1.config(bg='red')
-            b2.config(bg='red')
-            b3.config(bg='red')
-            win.config(text="Dommage, Bot a gagne!")
-
-        if b4["text"] == 'O' and b5["text"] == 'O' and b6["text"] == 'O':
-                b4.config(bg='red')
-                b5.config(bg='red')
-                b6.config(bg='red')
-                win.set(text="Dommage, Bot a gagne!")
-
-        if b7["text"] == 'O' and b8["text"] == 'O' and b9["text"] == 'O':
-                b7.config(bg='red')
-                b8.config(bg='red')
-                b9.config(bg='red')
-                win.config(text="Dommage, Bot a gagne!")
-
-        #draw
-        if (b1["text"] != " " and b2["text"] != " " and b3["text"] != " " and
-            b4["text"] != " " and b5["text"] != " " and b6["text"] != " " and
-            b7["text"] != " " and b8["text"] != " " and b9["text"] != " "):
-                win.config(text="egalite! Match fini en egalite")
+            #draw
+            if (b1["text"] != " " and b2["text"] != " " and b3["text"] != " " and
+                b4["text"] != " " and b5["text"] != " " and b6["text"] != " " and
+                b7["text"] != " " and b8["text"] != " " and b9["text"] != " "):
+                    win.config(text="egalite! Match fini en egalite")
+                    i -= 1
+                    CloseBoard()
+                    click = True
+                    gameOpen()
 
 
 
