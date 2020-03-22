@@ -3,15 +3,149 @@ import tkinter as tk
 import time
 import PIL.Image, PIL.ImageTk
 import random
+import sys
+import json
 
 from tkinter import messagebox
-
 
 #Tkinter app
 app = tk.Tk()
 app.title("MORPION")
 
-#variable Start
+#Login Function
+def connectVerif():
+    nm = collectNameLogin.get()
+    ps = collectPassLogin.get()
+    playerShow.get()
+    userData = open('./login/login.json', 'r')
+    jsonData = json.load(userData)
+
+    for dic in jsonData:
+        if nm in dic:
+            if (ps == dic.get(nm)):
+                print("connected")
+                playerShow.set(nm)
+                app.deiconify() #release invisible principal window app
+                userInfo.destroy()
+
+
+def confRegister():
+    NAME = name.get()
+    PASS = psw.get()
+    CONFPASS = confpsw.get()
+
+    # User dictionary
+    userDic = {}
+    if not(PASS == CONFPASS):
+        tk.messagebox.showerror("Mauvais mdp", "verifiez la similitude des mdp")
+    else:
+        print("test")
+        print(NAME, PASS)
+        userDic[NAME] = PASS
+        print(userDic)
+        dataBase = json.load(open('./login/login.json', 'r'))
+        if type(dataBase) is dict:
+            dataBase = [dataBase]
+        dataBase.append(userDic)
+
+        with open('./login/login.json', 'w') as outfile:
+            json.dump(dataBase, outfile)
+        tk.messagebox.showinfo("success", "Compte a bien ete cree!")
+        registerWindow.destroy()
+        userInfo.update()
+
+
+
+def register():
+    global name
+    global psw
+    global confpsw
+    global registerWindow
+
+    name = tk.StringVar()
+    psw = tk.StringVar()
+    confpsw = tk.StringVar()
+
+    #topLevel===
+    registerWindow = tk.Toplevel()
+    registerWindow.update_idletasks()  # Update "requested size" from geometry manager
+
+    x = (registerWindow.winfo_screenwidth() - registerWindow.winfo_reqwidth()) / 2
+    y = (registerWindow.winfo_screenheight() - registerWindow.winfo_reqheight()) / 2
+    registerWindow.geometry("+%d+%d" % (x, y))
+    #=============
+
+    userName1 = tk.Label(registerWindow, text='Pseudo', font=("Helvtica 10"))
+    entryName1 = tk.Entry(registerWindow, textvariable=name)
+
+    userPass1 = tk.Label(registerWindow, text='MotDePasse', font=("Helvtica 10"))
+    entryPass1 = tk.Entry(registerWindow, show="*", textvariable=psw)
+
+    userConfPass = tk.Label(registerWindow, text='Confirme MotDePasse', font=("Helvtica 10"))
+    entryConfPass = tk.Entry(registerWindow, show="*", textvariable=confpsw)
+
+    confirm = tk.Button(registerWindow, font=("Helvtica 10"), command= confRegister)
+    #errorLabel = tk.Label(register, font=("Helvtica 7"), fg='red')
+
+    userName1.pack()
+    entryName1.pack()
+    userPass1.pack()
+    entryPass1.pack()
+    userConfPass.pack()
+    entryConfPass.pack()
+    confirm.pack()
+
+
+
+def exit():
+    userInfo.destroy()
+    app.destroy()
+    sys.exit()
+
+#variable
+collectNameLogin = tk.StringVar()
+collectPassLogin = tk.StringVar()
+
+#===LOGIN WINDOW====
+userInfo = tk.Toplevel()
+userInfo.geometry('350x300')
+userInfo.title("CONNECTION A VOTRE COMPTE")
+userInfo.configure(background='white')
+fontPhoto = tk.PhotoImage(file='./image/logoAPOCS.png')
+fontPhotoResize = fontPhoto.subsample(30, 30)
+photoLabel = tk.Label(userInfo, image=fontPhotoResize, bg='white')
+#===========
+userInfo.update_idletasks()  # Update "requested size" from geometry manager
+
+x = (userInfo.winfo_screenwidth() - userInfo.winfo_reqwidth()) / 2
+y = (userInfo.winfo_screenheight() - userInfo.winfo_reqheight()) / 2
+userInfo.geometry("+%d+%d" % (x, y))
+
+#User Label + Entry
+userName = tk.Label(userInfo, text='Pseudo', font=("Helvtica 10"), bg='white')
+entryName = tk.Entry(userInfo, textvariable=collectNameLogin)
+userPass = tk.Label(userInfo, text='MotDePasse', font=("Helvtica 10"), bg='white')
+entryPass = tk.Entry(userInfo, show="*", textvariable=collectPassLogin)
+
+#Cancel
+buttonCancel = tk.Button(userInfo, text='ANNULER', bg='black', fg='red2', font=("Times 10 bold"), command=lambda: exit())
+
+#registration
+
+registration = tk.Button(userInfo, text='S\'inscrire', command=register)
+loginButton = tk.Button(userInfo, text="Connect", command=connectVerif)
+
+#pack
+photoLabel.pack()
+userName.pack()
+entryName.pack()
+userPass.pack()
+entryPass.pack()
+loginButton.pack()
+registration.pack()
+buttonCancel.pack()
+
+#====================================================================================
 
 #Fonctions
 
@@ -32,6 +166,8 @@ def gameOpen(i):
     global countWait
     global countStart
     global countStartLabel
+    global countClose
+    global countCloseLabel
     global game
 
     playerStart = random.randrange(1, 3)
@@ -56,6 +192,8 @@ def gameOpen(i):
     # This seems to draw the window frame immediately, so only call deiconify()
     # after setting correct window position
     game.deiconify()
+
+    game.resizable(False, False)
 
     #customImage
 
@@ -90,7 +228,6 @@ def gameOpen(i):
     if playerStart == 1:
 
         # button
-
         # ligne 1
         b1 = tk.Button(game, text= " ", width=13, height=5, bg="#7bb1ef", command=lambda: startGame(b1))
         b1.place(x=155, y=12)
@@ -137,6 +274,11 @@ def gameOpen(i):
         countStart.place(x=260, y=320)
         countStartLabel = tk.Label(game, bg='black', fg='#ff8d00', font=("Times 26 bold"))
         countStartLabel.place(x=300, y=360)
+
+        countClose = tk.Label(game, bg='black', fg='white', font=("Times 17 bold"))
+        countClose.place(x=110, y=320)
+        countCloseLabel = tk.Label(game, bg='black', fg='firebrick2', font=("Times 26 bold"))
+        countCloseLabel.place(x=320, y=390)
         #WHo start?
         labelStartUser = tk.Label(game, text='TU COMMENCES!', font=("Helvetica 26 italic bold underline"), bg='black', fg='DarkOrchid3')
         labelStartUser.place(x=130, y=450)
@@ -161,7 +303,7 @@ def gameOpen(i):
         b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGame(b4))
         b4.place(x=155, y=107)
 
-        b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGame(b4))
+        b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGame(b5))
         b5.place(x=265, y=107)
 
 
@@ -205,18 +347,24 @@ def gameOpen(i):
         countStart.place(x=260, y=320)
         countStartLabel = tk.Label(game, bg='black', fg='#ff8d00', font=("Times 26 bold"))
         countStartLabel.place(x=300, y=360)
+
+        countClose = tk.Label(game, bg='black', fg='white', font=("Times 17 bold"))
+        countClose.place(x=110, y=320)
+        countCloseLabel = tk.Label(game, bg='black', fg='firebrick2', font=("Times 26 bold"))
+        countCloseLabel.place(x=320, y=390)
         #Who start?
         labelStartUser = tk.Label(game, text='LE BOT A COMMENCE! A TOI', font=("Helvetica 26 italic bold underline"), bg='black', fg='DarkOrchid3')
         labelStartUser.place(x=90, y=450)
         countdownBeforeStart()
         labelStartUser.destroy()
 
-
 def CloseBoard():
     game.destroy()
 
 def countdown():
+    global click
     for k in range(10, 0, -1):
+        click = False
         countLabel["text"] = k
         countWait["text"] = "Compte-a-rebours avant prochain round"
         app.update()
@@ -234,24 +382,36 @@ def countdownBeforeStart():
     countStartLabel.destroy()
     countStart["text"] = "A TOI!"
 
+def countdownBeforeClose():
+    global click
+    for k in range(5, -1, -1):
+        click = False
+        countCloseLabel["text"] = k
+        countClose["text"] = "Compte-a-rebours avant fermeture \n tes donnees ont ete save inchallah"
+        app.update()
+        time.sleep(1)
+
+#def score(winBot,winUser):
+
 
 #global settings
 y = "" #sign attribution
-player1 = []
-player2 = []
+player = []
+playerBot = []
 click = True
+winBot = 0
+winUser = 0
 
 def startGame(b):
     global x,y
-    global player1, player2
+    global player, playerBot
     global click
 
     global winBot
     global winUser
     #global game
     #global win
-    winBot = 0
-    winUser = 0
+
 
 
     #score.append(winUser)
@@ -786,17 +946,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
         #====
-        CloseBoard()
-        click = True
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -807,17 +968,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -828,17 +990,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -850,18 +1013,19 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
         # ====
-        CloseBoard()
-        click = True
-        winUser += 1
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
     if b3["text"] == 'X' and b5["text"] == 'X' and b7["text"] == 'X':
@@ -871,18 +1035,19 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
         # ====
-        CloseBoard()
-        click = True
-        winUser += 1
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
     # Horizontal verif
@@ -893,17 +1058,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -914,17 +1080,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -935,17 +1102,18 @@ def startGame(b):
         win.config(text="GG, Tu m'impressionnes!")
         click = False
         winUser += 1
-        # countdown
         countStart.destroy()
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -959,17 +1127,18 @@ def startGame(b):
             win.config(text="Dommage, Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -980,17 +1149,18 @@ def startGame(b):
             win.config(text="Dommage, Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1001,17 +1171,18 @@ def startGame(b):
             win.config(text="Dommage, Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1023,17 +1194,18 @@ def startGame(b):
             win.config(text="Dommage Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1044,18 +1216,18 @@ def startGame(b):
             win.config(text="Dommage Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
-                print("point Bot:", winBot, "point User:", winUser)
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1068,17 +1240,17 @@ def startGame(b):
         click = False
         winBot += 1
         countStart.destroy()
-        CloseBoard()
-        # countdown
-        countdown()
-        #====
-        CloseBoard()
-        click = True
+        # ====
         upRd = rd - 1
         if upRd == 0:
             print("end")
+            countdownBeforeClose()
             CloseBoard()
+            print("point Bot:", winBot, "point User:", winUser)
         else:
+            # countdown
+            countdown()
+            CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
             gameOpen(upRd)
 
@@ -1089,17 +1261,18 @@ def startGame(b):
             win.config(text="Dommage, Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1110,17 +1283,18 @@ def startGame(b):
             win.config(text="Dommage, Bot a gagne!")
             click = False
             winBot += 1
-            # countdown
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
                 print("end")
+                countdownBeforeClose()
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
 
@@ -1131,8 +1305,6 @@ def startGame(b):
             b1.config(bg='#0038ff')
             b4.config(bg='#0038ff')
             b7.config(bg='#0038ff')
-            win.config(text="egalite! Match fini en egalite")
-            click = False
 
             b2.config(bg='#ffffff')
             b5.config(bg='#ffffff')
@@ -1141,21 +1313,22 @@ def startGame(b):
             b3.config(bg='#fb0d01')
             b6.config(bg='#fb0d01')
             b9.config(bg='#fb0d01')
-
-            #countdown
+            win.config(text="egalite! Match fini en egalite")
+            click = False
             countStart.destroy()
-            countdown()
-            #====
-            CloseBoard()
-            click = True
+            # ====
             upRd = rd - 1
             if upRd == 0:
+                countdownBeforeClose()
                 print("end")
                 CloseBoard()
+                print("point Bot:", winBot, "point User:", winUser)
             else:
+                # countdown
+                countdown()
+                CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
                 gameOpen(upRd)
-
 
 
 def initialisation():
@@ -1193,8 +1366,10 @@ app.geometry("+%d+%d" % (x, y))
 
 # This seems to draw the window frame immediately, so only call deiconify()
 # after setting correct window position
-app.deiconify()
 
+app.resizable(False, False)
+
+#cursor
 app.configure(cursor='heart')
 
 #title
@@ -1216,7 +1391,7 @@ background.pack(side="bottom", fill="both", expand="yes")
 #EntryVariable
 nb = tk.IntVar()
 df = tk.StringVar()
-
+playerShow = tk.StringVar()
 #Labels==============================================================
 #TITRE
 
@@ -1237,7 +1412,12 @@ difficulty = tk.Entry(app, textvariable=df, font="Helvetica 11 italic bold")
 df.set("facile-moyen-difficile-extreme")
 difficulty.place(x=325, y=150)
 
-
+#player
+plLabel = tk.Label(app, text="Bienvenue: ", font="Helvetica 11 italic bold")
+playerLabelShow = tk.Label(app, textvariable=playerShow, bg="pink", font="Helvetica 11 italic bold")
+playerShow.set("Joueur: ???")
+playerLabelShow.place(x= 102, y=300)
+plLabel.place(x=10, y=300)
 #Bottom
 matchValidate = tk.Button(app, text="JOUER", font="Helvetica 11 italic bold", command=initialisation, bg='#ff8d00', fg="black")
 matchValidate.place(x=270, y=190)
