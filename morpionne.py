@@ -1,6 +1,5 @@
 #Librairies
 import tkinter as tk
-import _tkinter as _tk
 import time
 import PIL.Image, PIL.ImageTk
 import random
