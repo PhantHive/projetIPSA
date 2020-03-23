@@ -13,6 +13,13 @@ app = tk.Tk()
 app.title("MORPION")
 
 #Login Function
+def voiceScore():
+
+    return
+    #if gamesNb == 5
+
+
+
 def connectVerif():
     nm = collectNameLogin.get()
     ps = collectPassLogin.get()
@@ -26,6 +33,9 @@ def connectVerif():
                 print("connected")
                 playerShow.set(nm)
                 app.deiconify() #release invisible principal window app
+                pygame.mixer.init()
+                pygame.mixer.music.load('./sound/voice/welcome.ogg')
+                pygame.mixer.music.play()
                 userInfo.destroy()
             else:
                 tk.messagebox.showwarning("Wrong Password", "MAUVAIS MOT DE PASSE!")
@@ -125,11 +135,11 @@ def gameOpen(i):
     playerStart = random.randrange(1, 3)
     print(playerStart)
 
-    rd = i
+    rd = i  # number of round previously chosen
+
     game = tk.Toplevel()
     # customs window
     game.geometry("650x650")
-    game.withdraw()
     game.update_idletasks()  # Update "requested size" from geometry manager
     game.iconbitmap("./image/icon.ico/")
     # window to avoid update_idletasks() drawing the window in the wrong
@@ -176,8 +186,13 @@ def gameOpen(i):
     label_player1 = tk.Label(game, text="Joueur 2: O")
     label_player1.place(x=500, y=200)
 
+    pygame.mixer.init()
     #labels players
     if playerStart == 1:
+        #voice start====
+        pygame.mixer.music.load('./sound/voice/matchstart.ogg')
+        pygame.mixer.music.play()
+        #===
 
         # button
         # ligne 1
@@ -238,6 +253,10 @@ def gameOpen(i):
         labelStartUser.destroy()
 
     else:
+        # voice start====
+        pygame.mixer.music.load('./sound/voice/matchstart.ogg')
+        pygame.mixer.music.play()
+        # ===
         playCaseFirst = random.randrange(1, 5) #choose randomly where to start playing between corner case and middle case
         print(playCaseFirst)
         # button
@@ -887,7 +906,9 @@ def startGame(b):
 
 
         #winner check
-#====================================================
+#===================================================
+    #mixerinit
+    pygame.mixer.init()
                 #USER
     # Vertical Verif
     if b1["text"] == 'X' and b4["text"] == 'X' and b7["text"] == 'X':
@@ -900,11 +921,15 @@ def startGame(b):
         countStart.destroy()
         #====
         upRd = rd - 1
+
+
         if upRd == 0:
             print("end")
             countdownBeforeClose()
             CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
+
+
         else:
             # countdown
             countdown()
@@ -1270,10 +1295,15 @@ def startGame(b):
             # ====
             upRd = rd - 1
             if upRd == 0:
+                voiceScore()
                 countdownBeforeClose()
                 print("end")
                 CloseBoard()
                 print("point Bot:", winBot, "point User:", winUser)
+
+
+
+
             else:
                 # countdown
                 countdown()
@@ -1301,12 +1331,13 @@ def initialisation():
             if (gamesNb > 5):
                 pygame.mixer.music.load('./sound/error.ogg')
                 pygame.mixer.music.play()
-                nb.set("No life! joue -!")
+                nb.set("No life! joue - !")
             elif (gamesNb > 0):
                 # SOUND===
                 pygame.mixer.music.load('./sound/play.ogg')
                 pygame.mixer.music.play()
                 gameOpen(gamesNb)
+
 
             else:
                 pygame.mixer.music.load('./sound/error.ogg')
@@ -1368,8 +1399,8 @@ background.pack(side="bottom", fill="both", expand="yes")
 
 
 #EntryVariable
-nb = tk.StringVar()
-df = tk.StringVar()
+nb = tk.StringVar() #nombre de round
+df = tk.StringVar() #difficulte
 playerShow = tk.StringVar()
 #Labels==============================================================
 #TITRE
@@ -1378,8 +1409,6 @@ playerShow = tk.StringVar()
 #number of match
 nbMatchLabel = tk.Label(app, text="Nombre de Round:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
 nbMatchLabel.place(x=160, y=120)
-
-
 nbMatch = tk.Entry(app, textvariable=nb, font="Helvetica 11 italic bold")
 nb.set("1-5")
 nbMatch.place(x=320, y=120)
@@ -1397,6 +1426,7 @@ playerLabelShow = tk.Label(app, textvariable=playerShow, bg="pink", font="Helvet
 playerShow.set("Joueur: ???")
 playerLabelShow.place(x= 102, y=300)
 plLabel.place(x=10, y=300)
+
 #Bottom
 matchValidate = tk.Button(app, text="JOUER", font="Helvetica 11 italic bold", command=initialisation, bg='#ff8d00', fg="black")
 matchValidate.place(x=270, y=190)
