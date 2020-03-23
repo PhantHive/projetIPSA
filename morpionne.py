@@ -1,11 +1,12 @@
 #Librairies
 import tkinter as tk
+import _tkinter as _tk
 import time
 import PIL.Image, PIL.ImageTk
 import random
 import sys
 import json
-
+import pygame.mixer, pygame.mixer_music
 from tkinter import messagebox
 
 #Tkinter app
@@ -27,7 +28,8 @@ def connectVerif():
                 playerShow.set(nm)
                 app.deiconify() #release invisible principal window app
                 userInfo.destroy()
-
+            else:
+                tk.messagebox.showwarning("Wrong Password", "MAUVAIS MOT DE PASSE!")
 
 def confRegister():
     NAME = name.get()
@@ -53,8 +55,6 @@ def confRegister():
         tk.messagebox.showinfo("success", "Compte a bien ete cree!")
         registerWindow.destroy()
         userInfo.update()
-
-
 
 def register():
     global name
@@ -84,7 +84,7 @@ def register():
     userConfPass = tk.Label(registerWindow, text='Confirme MotDePasse', font=("Helvtica 10"))
     entryConfPass = tk.Entry(registerWindow, show="*", textvariable=confpsw)
 
-    confirm = tk.Button(registerWindow, font=("Helvtica 10"), command= confRegister)
+    confirm = tk.Button(registerWindow, text="S'enregistrer", font=("Helvtica 10"), command= confRegister)
     #errorLabel = tk.Label(register, font=("Helvtica 7"), fg='red')
 
     userName1.pack()
@@ -95,57 +95,10 @@ def register():
     entryConfPass.pack()
     confirm.pack()
 
-
-
 def exit():
     userInfo.destroy()
     app.destroy()
     sys.exit()
-
-#variable
-collectNameLogin = tk.StringVar()
-collectPassLogin = tk.StringVar()
-
-#===LOGIN WINDOW====
-userInfo = tk.Toplevel()
-userInfo.geometry('350x300')
-userInfo.title("CONNECTION A VOTRE COMPTE")
-userInfo.configure(background='white')
-fontPhoto = tk.PhotoImage(file='./image/logoAPOCS.png')
-fontPhotoResize = fontPhoto.subsample(30, 30)
-photoLabel = tk.Label(userInfo, image=fontPhotoResize, bg='white')
-#===========
-userInfo.update_idletasks()  # Update "requested size" from geometry manager
-
-x = (userInfo.winfo_screenwidth() - userInfo.winfo_reqwidth()) / 2
-y = (userInfo.winfo_screenheight() - userInfo.winfo_reqheight()) / 2
-userInfo.geometry("+%d+%d" % (x, y))
-
-#User Label + Entry
-userName = tk.Label(userInfo, text='Pseudo', font=("Helvtica 10"), bg='white')
-entryName = tk.Entry(userInfo, textvariable=collectNameLogin)
-userPass = tk.Label(userInfo, text='MotDePasse', font=("Helvtica 10"), bg='white')
-entryPass = tk.Entry(userInfo, show="*", textvariable=collectPassLogin)
-
-#Cancel
-buttonCancel = tk.Button(userInfo, text='ANNULER', bg='black', fg='red2', font=("Times 10 bold"), command=lambda: exit())
-
-#registration
-
-registration = tk.Button(userInfo, text='S\'inscrire', command=register)
-loginButton = tk.Button(userInfo, text="Connect", command=connectVerif)
-
-#pack
-photoLabel.pack()
-userName.pack()
-entryName.pack()
-userPass.pack()
-entryPass.pack()
-loginButton.pack()
-registration.pack()
-buttonCancel.pack()
-
-#====================================================================================
 
 #Fonctions
 
@@ -384,6 +337,7 @@ def countdownBeforeStart():
 
 def countdownBeforeClose():
     global click
+
     for k in range(5, -1, -1):
         click = False
         countCloseLabel["text"] = k
@@ -403,7 +357,7 @@ winBot = 0
 winUser = 0
 
 def startGame(b):
-    global x,y
+    global x, y
     global player, playerBot
     global click
 
@@ -416,8 +370,6 @@ def startGame(b):
 
     #score.append(winUser)
     #score.append(winBot)
-
-
 
     #b1
     if b == b1:
@@ -1337,19 +1289,47 @@ def initialisation():
     gamesNb = nb.get()
     diffMode = df.get()
 
+    pygame.mixer.init()
+
+
+
     lDf = ["facile", "moyen", "difficile", "extreme"]
+
+
     if diffMode in lDf:
-        if (gamesNb > 5):
-            nb.set("No life! joue -!")
-        elif (gamesNb > 0):
-            gameOpen(gamesNb)
-        else:
-            nb.set("WHUT")
+        try:
+            gamesNb = int(gamesNb)
+            if (gamesNb > 5):
+                pygame.mixer.music.load('./sound/error.ogg')
+                pygame.mixer.music.play()
+                nb.set("No life! joue -!")
+            elif (gamesNb > 0):
+                # SOUND===
+                pygame.mixer.music.load('./sound/play.ogg')
+                pygame.mixer.music.play()
+                gameOpen(gamesNb)
+
+            else:
+                pygame.mixer.music.load('./sound/error.ogg')
+                pygame.mixer.music.play()
+                nb.set("WHUT")
+
+        except ValueError:
+            pygame.mixer.music.load('./sound/error.ogg')
+            pygame.mixer.music.play()
+            nb.set("ERROR VALUE")
+            print("small error")
+
     else:
-        df.set("error")
+        print("small error")
+        pygame.mixer.music.load('./sound/error.ogg')
+        pygame.mixer.music.play()
+        df.set("ERROR NAME")
 
 
 #tkinter custom
+
+
 app.withdraw()
 app.update_idletasks()  # Update "requested size" from geometry manager
 app.iconbitmap("./image/icon.ico/")
@@ -1389,7 +1369,7 @@ background.pack(side="bottom", fill="both", expand="yes")
 
 
 #EntryVariable
-nb = tk.IntVar()
+nb = tk.StringVar()
 df = tk.StringVar()
 playerShow = tk.StringVar()
 #Labels==============================================================
@@ -1423,7 +1403,53 @@ matchValidate = tk.Button(app, text="JOUER", font="Helvetica 11 italic bold", co
 matchValidate.place(x=270, y=190)
 #=====================================================================
 
+#LOGIN WINDOW=========================================================
+#variable
+collectNameLogin = tk.StringVar()
+collectPassLogin = tk.StringVar()
 
+#===LOGIN WINDOW====
+userInfo = tk.Toplevel()
+userInfo.geometry('350x300')
+userInfo.title("CONNECTION A VOTRE COMPTE")
+userInfo.configure(background='white')
+fontPhoto = tk.PhotoImage(file='./image/logoAPOCS.png')
+fontPhotoResize = fontPhoto.subsample(30, 30)
+photoLabel = tk.Label(userInfo, image=fontPhotoResize, bg='white')
+userInfo.resizable(False, False)
+
+#===========
+userInfo.update_idletasks()  # Update "requested size" from geometry manager
+
+x = (userInfo.winfo_screenwidth() - userInfo.winfo_reqwidth()) / 2
+y = (userInfo.winfo_screenheight() - userInfo.winfo_reqheight()) / 2
+userInfo.geometry("+%d+%d" % (x, y))
+
+#User Label + Entry
+userName = tk.Label(userInfo, text='Pseudo', font=("Helvtica 10"), bg='white')
+entryName = tk.Entry(userInfo, textvariable=collectNameLogin)
+userPass = tk.Label(userInfo, text='MotDePasse', font=("Helvtica 10"), bg='white')
+entryPass = tk.Entry(userInfo, show="*", textvariable=collectPassLogin)
+
+#Cancel
+buttonCancel = tk.Button(userInfo, text='ANNULER', bg='black', fg='red2', font=("Times 10 bold"), command=lambda: exit())
+
+#registration
+
+registration = tk.Button(userInfo, text='S\'inscrire', command=register)
+loginButton = tk.Button(userInfo, text="Connect", command=connectVerif)
+
+#pack
+photoLabel.pack()
+userName.pack()
+entryName.pack()
+userPass.pack()
+entryPass.pack()
+loginButton.pack()
+registration.pack()
+buttonCancel.pack()
+
+#====================================================================================
 
 
 #Tkinter loop
