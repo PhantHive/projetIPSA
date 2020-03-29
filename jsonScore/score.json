@@ -1,0 +1,14 @@
+{
+    "e": {
+        "extreme": {
+            "Victoire": 2,
+            "Defaite": 3,
+            "Egalite": 3
+        },
+        "cauchemar": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 2
+        }
+    }
+}

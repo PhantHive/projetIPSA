@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['morpionne.py'],
-             pathex=['D:\\DOSSIER ULTIME\\PROG\\projetIPSA'],
+a = Analysis(['D:\\DOSSIER ULTIME\\PROG\\projetIPSA\\morpionne.py'],
+             pathex=['D:\\DOSSIER ULTIME\\PROG\\projetIPSA\\morpionApp'],
              binaries=[],
              datas=[],
              hiddenimports=[],
