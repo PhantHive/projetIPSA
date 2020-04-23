@@ -1,0 +1,24 @@
+{
+    "e": {
+        "difficile": {
+            "Victoire": 0,
+            "Defaite": 1,
+            "Egalite": 1
+        },
+        "extreme": {
+            "Victoire": 0,
+            "Defaite": 3,
+            "Egalite": 1
+        },
+        "virtuoso": {
+            "Victoire": 16,
+            "Defaite": 0,
+            "Egalite": 0
+        },
+        "cauchemar": {
+            "Victoire": 0,
+            "Defaite": 2,
+            "Egalite": 0
+        }
+    }
+}

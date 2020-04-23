@@ -1,14 +1,9 @@
 {
     "e": {
-        "extreme": {
-            "Victoire": 2,
-            "Defaite": 3,
-            "Egalite": 3
-        },
-        "cauchemar": {
+        "difficile": {
             "Victoire": 1,
-            "Defaite": 0,
-            "Egalite": 2
+            "Defaite": 3,
+            "Egalite": 0
         }
     }
 }
