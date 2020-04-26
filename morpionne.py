@@ -1,4 +1,6 @@
 #Librairies
+import pymongo
+from pymongo import MongoClient
 import tkinter as tk
 import time
 import PIL.Image, PIL.ImageTk, PIL.ImageDraw
@@ -8,6 +10,16 @@ import json
 import pygame.mixer, pygame.mixer_music
 from tkinter import messagebox
 
+#db===================
+cluster = MongoClient("mongodb+srv://phanthive:morpionne@cluster0-pll8o.mongodb.net/test?retryWrites=true&w=majority")
+db = cluster["morpionne"]
+collection = db["connection"]
+collectionScore = db["leaderboard"]
+#online classification
+collectionScore.find({}, {"scoreLB": 1}).limit(100)
+
+#=====================
+
 #Tkinter app
 
 app = tk.Tk()
@@ -15,6 +27,7 @@ app.title("MORPION")
 
 def updateLB():
     # ===
+    global numberThree, numberTwo, numberOne
     file = './jsonScore/score.json'
     outputLB = json.load(open(file, 'r'))
 
@@ -55,9 +68,57 @@ def updateLB():
     except KeyError:
         facileScore.set(0)
 
+    lb = []
+    collectDATA = collectionScore.find({})
+    for dic in collectDATA:
+        a = str(dic["scoreLB"])
+        b = dic["pseudo"]
+        ab = a + " by " + b
+        lb.append(ab)
+
+
+    lb.sort(key = lambda x: int(x.split(" by ")[0]))
+    lb.reverse()
+
+    try:
+        numberOne = lb[0]
+        numberTwo = lb[1]
+        numberThree = lb[2]
+    except IndexError:
+        try:
+            numberOne = lb[0]
+            numberTwo = lb[1]
+        except IndexError:
+            try:
+                numberOne = lb[0]
+            except IndexError:
+                return
+
+    try:
+        onlineTOP1.set(numberOne)
+    except NameError:
+        onlineTOP1.set("personne classé!")
+
+    try:
+        onlineTOP2.set(numberTwo)
+    except NameError:
+        onlineTOP2.set("personne en position2")
+
+    try:
+        onlineTOP3.set(numberThree)
+    except NameError:
+        onlineTOP3.set("personne en position3")
+
+
+
+    print(lb[0])
+
+
 #trop de probleme a regler sur fonction voiceScore!!!!!
 def voiceScore():
     global frames
+    global pseudo
+
     pygame.mixer.init()
     L = ['./sound/voice/clash/clash.ogg', './sound/voice/clash/clash2.ogg', './sound/voice/clash/clash3.ogg', './sound/voice/clash/clash4.ogg', './sound/voice/clash/clash5.ogg']
     filename = random.choice(L)
@@ -333,6 +394,22 @@ def voiceScore():
                 upFile.truncate()
             except:
                 print("probleme survenu 2")  #TROP
+
+
+    verifyScore = collectionScore.count_documents({pseudo: {"$exists": True}})
+
+    if (verifyScore != 0):
+        print("cet utilisateur a deja un score")
+        for doc in collectionScore.find({pseudo: {"$exists": True}}):
+            oldScore = doc[pseudo]["score"]
+            print("ancien score" + str(oldScore))
+            newScore = oldScore + winUser
+            print("newscore" + str(newScore))
+            collectionScore.update_one({pseudo: {"name": pseudo, "score": oldScore}}, {"$set": {pseudo: {"name": pseudo, "score": newScore}, "scoreLB": newScore, "pseudo": pseudo}})
+            print("score bien mise a jour")
+    else:
+        collectionScore.insert_one({pseudo: { "name": pseudo, "score": winUser}, "scoreLB": winUser, "pseudo": pseudo})
+
     updateLB()
 
 #=====================FONCTION LOGIN-REGISTER
@@ -346,9 +423,22 @@ def connectVerif():
     nm = collectNameLogin.get()
     ps = collectPassLogin.get()
     playerShow.get()
-    userData = open('./login/login.json', 'r')
-    jsonData = json.load(userData)
+    #userData = open('./login/login.json', 'r')
+    #jsonData = json.load(userData)
 
+    resultsDB = collection.count_documents({"name": nm, "pass": ps})
+
+    if (resultsDB != 0):
+        print("connected")
+        playerShow.set(nm)
+        app.deiconify()  # release invisible principal window app
+        pygame.mixer.init()
+        pygame.mixer.music.load('./sound/voice/welcome.ogg')
+        pygame.mixer.music.play()
+        userInfo.destroy()
+    else:
+        tk.messagebox.showwarning("Wrong Password", "MAUVAIS MOT DE PASSE! OU Mauvais nom d'utilisateur")
+    '''
     for dic in jsonData:
         if nm in dic:
             if (ps == dic.get(nm)):
@@ -362,6 +452,7 @@ def connectVerif():
                 userInfo.destroy()
             else:
                 tk.messagebox.showwarning("Wrong Password", "MAUVAIS MOT DE PASSE!")
+    '''
 
 def confRegister():
     global NAME
@@ -370,12 +461,26 @@ def confRegister():
     CONFPASS = confpsw.get()
 
     # User dictionary
-    userDic = {}
+    #userDic = {}
+
+    try:
+        dbase = collection.find({})
+        for doc in dbase:
+            if (doc["name"] == NAME):
+                print("pas possible")
+                tk.messagebox.showinfo("impossible", "Nom d'utilisateur deja pris!")
+                return
+        print("mince")
+        return 1/0
+    except ZeroDivisionError:
+        collection.insert_one({"name": NAME, "pass": PASS})
+        tk.messagebox.showinfo("success", "Compte a bien ete cree!")
+        registerWindow.destroy()
+        return
 
 
-    if not(PASS == CONFPASS):
-        tk.messagebox.showerror("Mauvais mdp", "verifiez la similitude des mdp")
-    else:
+
+        '''
         print("test")
         print(NAME, PASS)
         userDic[NAME] = PASS
@@ -384,12 +489,15 @@ def confRegister():
         if type(dataBase) is dict:
             dataBase = [dataBase]
         dataBase.append(userDic)
-
+        
+  
         with open('./login/login.json', 'w') as outfile:
             json.dump(dataBase, outfile)
         tk.messagebox.showinfo("success", "Compte a bien ete cree!")
         registerWindow.destroy()
         userInfo.update()
+        '''
+
 
 def register():
     global name
@@ -440,6 +548,7 @@ def exit():
 
 #Fonctions
 #==================WIN VERIF + ATTACK
+
 def checkWin():
     global click
     global winBot
@@ -467,7 +576,6 @@ def checkWin():
             countdownBeforeClose()
             CloseBoard()
             print("point Bot:", winBot, "point User:", winUser)
-
 
         else:
             # countdown
@@ -945,7 +1053,6 @@ def attack():
         b9.config(text='O')
         click = True
         return click
-
     #diagonal 1
     elif (b5["text"] == 'O') and (b9["text"] == 'O') and (b1["text"] == ' '):
         b1.config(text='O')
@@ -1931,11 +2038,6 @@ def countdownBeforeClose():
         countClose["text"] = "Compte-a-rebours avant fermeture \n tes donnees ont ete save inchallah"
         app.update()
         time.sleep(1)
-
-
-
-#def score(winBot,winUser):
-
 
 #global settings
 y = "" #sign attribution
@@ -5585,8 +5687,6 @@ def initialisation():
                 pygame.mixer.music.load('./sound/play.ogg')
                 pygame.mixer.music.play()
                 gameOpen(gamesNb)
-
-
             else:
                 pygame.mixer.music.load('./sound/error.ogg')
                 pygame.mixer.music.play()
@@ -5632,15 +5732,11 @@ def initialisation():
 
 #tkinter custom=====================================================================================================================
 
-app.withdraw()
+app.withdraw() #hide app
 app.update_idletasks()  # Update "requested size" from geometry manager
 app.iconbitmap("./image/icon.ico/")
 app.geometry("650x390")
 
-# window to avoid update_idletasks() drawing the window in the wrong
-# position.
-app.withdraw()
-app.update_idletasks()  # Update "requested size" from geometry manager
 
 x = (app.winfo_screenwidth() - app.winfo_reqwidth()) / 3
 y = (app.winfo_screenheight() - app.winfo_reqheight()) / 3
@@ -5711,6 +5807,11 @@ matchValidate.place(x=270, y=190)
 collectNameLogin = tk.StringVar()
 collectPassLogin = tk.StringVar()
 #===========================
+#onlineLB===
+onlineTOP1 = tk.StringVar()
+onlineTOP2 = tk.StringVar()
+onlineTOP3 = tk.StringVar()
+#===
 virtuosoScore = tk.IntVar()
 cauchemarScore = tk.IntVar()
 extremeScore = tk.IntVar()
@@ -5725,7 +5826,7 @@ userInfo.geometry('350x300')
 userInfo.title("CONNECTION A VOTRE COMPTE")
 userInfo.configure(background='white')
 fontPhoto = tk.PhotoImage(file='./image/logoAPOCS.png')
-fontPhotoResize = fontPhoto.subsample(30, 30)
+fontPhotoResize = fontPhoto.subsample(30, 30) #resize pic
 photoLabel = tk.Label(userInfo, image=fontPhotoResize, bg='white')
 userInfo.resizable(False, False)
 
@@ -5748,7 +5849,8 @@ entryPass = tk.Entry(userInfo, show="*", textvariable=collectPassLogin)
 vicLabel = tk.Label(app, width=15, text="⭐MES VICTOIRES⭐", bg='black', fg='yellow')
 vicLabel.place(x='510', y='200')
 
-
+onlineVicLabel = tk.Label(app, width=15, text="⭐ONLINE TOP 3⭐", bg='black', fg='yellow')
+onlineVicLabel.place(x='20', y='200')
 
 virtuoso = tk.Label(app, width=12, text="VIRTUOSE >", bg='black', fg='DeepSkyBlue2', font="Helvetica 9")
 virtuoso.place(x='490', y='220')
@@ -5763,7 +5865,17 @@ moyen.place(x='490', y='300')
 facile = tk.Label(app, width=12, text="FACILE >", bg='black', fg='DeepSkyBlue2', font="Helvetica 9")
 facile.place(x='490', y='320')
 
+#ONLINE LEADERBOARD
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP1, bg='black', fg='cyan', font='Helvetica 9')
+topPlayer1.place(x='20', y='225')
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP2, bg='black', fg='cyan', font='Helvetica 9')
+topPlayer1.place(x='20', y='250')
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP3, bg='black', fg='cyan', font='Helvetica 9')
+topPlayer1.place(x='20', y='275')
 
+infoOnline = tk.Label(app, width=95, text="Pour pouvoir observer/mettre a jour le leaderboard en ligne il vous faut joue une partie! Critere du Leader: nombre de victoire", bg='green', fg='black', font='Times 9')
+infoOnline.place(x="10", y="360")
+#====OFFLINE RESULTS
 virtuoseLabel = tk.Label(app, width=7, textvariable=virtuosoScore, bg='black', fg='white', font="Helvetica 9")
 virtuoseLabel.place(x='580', y='220')
 cauchemarLabel = tk.Label(app, textvariable=cauchemarScore, width=7, bg='black', fg='white', font="Helvetica 9")

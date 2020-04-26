@@ -4,6 +4,40 @@
             "Victoire": 1,
             "Defaite": 3,
             "Egalite": 0
+        },
+        "virtuoso": {
+            "Victoire": 1,
+            "Defaite": 29,
+            "Egalite": 0
+        },
+        "facile": {
+            "Victoire": 118,
+            "Defaite": 10,
+            "Egalite": 3
+        },
+        "moyen": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 0
+        },
+        "extreme": {
+            "Victoire": 0,
+            "Defaite": 0,
+            "Egalite": 1
+        }
+    },
+    "admin": {
+        "facile": {
+            "Victoire": 19,
+            "Defaite": 0,
+            "Egalite": 0
+        }
+    },
+    "bite": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 0
         }
     }
 }

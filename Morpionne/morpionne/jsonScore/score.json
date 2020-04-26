@@ -1,23 +1,49 @@
 {
     "e": {
         "difficile": {
-            "Victoire": 0,
-            "Defaite": 1,
-            "Egalite": 1
+            "Victoire": 1,
+            "Defaite": 3,
+            "Egalite": 0
+        },
+        "virtuoso": {
+            "Victoire": 1,
+            "Defaite": 30,
+            "Egalite": 0
+        },
+        "facile": {
+            "Victoire": 123,
+            "Defaite": 10,
+            "Egalite": 3
+        },
+        "moyen": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 0
         },
         "extreme": {
             "Victoire": 0,
             "Defaite": 3,
-            "Egalite": 1
-        },
-        "virtuoso": {
-            "Victoire": 16,
+            "Egalite": 3
+        }
+    },
+    "admin": {
+        "facile": {
+            "Victoire": 19,
             "Defaite": 0,
             "Egalite": 0
-        },
-        "cauchemar": {
-            "Victoire": 0,
-            "Defaite": 2,
+        }
+    },
+    "bite": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 0
+        }
+    },
+    "testerPRO": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 0,
             "Egalite": 0
         }
     }
