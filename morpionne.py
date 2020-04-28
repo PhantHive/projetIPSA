@@ -1179,33 +1179,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="black", activebackground="black", command=lambda: startGameVirtuoso(b9))
             b9.place(x=375, y=215)
 
         elif diffMode == "cauchemar":
@@ -1214,33 +1214,33 @@ def gameOpen(i):
 
             # button
             # ligne 1
-            b1 = tk.Button(game, text= " ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b1))
+            b1 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text= " ", bg="black", width=13, height=5, activebackground="black", command=lambda: startGameCauchemar(b2))
+            b2 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', bg="black", width=13, height=5, activebackground="black", command=lambda: startGameCauchemar(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text= " ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b3))
+            b3 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text= " ", bg="black", width=13, height=6, activebackground="black", command=lambda: startGameCauchemar(b4))
+            b4 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', bg="black", width=13, height=6, activebackground="black", command=lambda: startGameCauchemar(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text= " ", width=13, height=6, bg="black", activebackground="black",command=lambda: startGameCauchemar(b5))
+            b5 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black",command=lambda: startGameCauchemar(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text= " ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b6))
+            b6 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text= " ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b7))
+            b7 = tk.Button(game, text= " ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game,text= " ", bg="black", width=13, height=5, activebackground="black", command=lambda: startGameCauchemar(b8))
+            b8 = tk.Button(game,text= " ",cursor='@cursor/dbz.ani', bg="black", width=13, height=5, activebackground="black", command=lambda: startGameCauchemar(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game,text= " ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b9))
+            b9 = tk.Button(game,text= " ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b9))
             b9.place(x=375, y=215)
 
         elif diffMode == "extreme":
@@ -1254,33 +1254,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameExtreme(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameExtreme(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameExtreme(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameExtreme(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameExtreme(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameExtreme(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameExtreme(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameExtreme(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameExtreme(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameExtreme(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b9))
             b9.place(x=375, y=215)
 
         elif diffMode == "difficile":
@@ -1289,33 +1289,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameDifficile(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameDifficile(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameDifficile(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameDifficile(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameDifficile(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameDifficile(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameDifficile(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameDifficile(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameDifficile(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameDifficile(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b9))
             b9.place(x=375, y=215)
 
         elif diffMode == "moyen":
@@ -1324,33 +1324,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameMoyen(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameMoyen(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameMoyen(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameMoyen(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameMoyen(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameMoyen(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameMoyen(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameMoyen(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameMoyen(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameMoyen(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b9))
             b9.place(x=375, y=215)
 
         elif diffMode == "facile":
@@ -1359,33 +1359,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameFacile(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameFacile(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameFacile(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameFacile(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameFacile(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameFacile(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameFacile(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameFacile(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameFacile(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameFacile(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b9))
             b9.place(x=375, y=215)
 
         #Label Winner
@@ -1428,41 +1428,41 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black",
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black",
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black",
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black",
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black",
                            command=lambda: startGameVirtuoso(b9))
             b9.place(x=375, y=215)
 
@@ -1486,34 +1486,34 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b5))
             b5.place(x=265, y=107)
 
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="black", activebackground="black", command=lambda: startGameCauchemar(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="black", activebackground="black", command=lambda: startGameCauchemar(b9))
             b9.place(x=375, y=215)
 
             #random choose where to start
@@ -1538,33 +1538,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameExtreme(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameExtreme(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameExtreme(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameExtreme(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameExtreme(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameExtreme(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameExtreme(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameExtreme(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameExtreme(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameExtreme(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameExtreme(b9))
             b9.place(x=375, y=215)
 
             # random choose where to start
@@ -1587,33 +1587,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameDifficile(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameDifficile(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameDifficile(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameDifficile(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameDifficile(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameDifficile(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameDifficile(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameDifficile(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameDifficile(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameDifficile(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameDifficile(b9))
             b9.place(x=375, y=215)
 
             if playCaseFirst == 1:
@@ -1633,33 +1633,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani',  width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameMoyen(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameMoyen(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameMoyen(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameMoyen(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameMoyen(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, bg="#7bb1ef", command=lambda: startGameMoyen(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameMoyen(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=6, command=lambda: startGameMoyen(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameMoyen(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameMoyen(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameMoyen(b9))
             b9.place(x=375, y=215)
 
             if playCaseFirst == 1:
@@ -1679,33 +1679,33 @@ def gameOpen(i):
             print(playCaseFirst)
             # button
             # ligne 1
-            b1 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b1))
+            b1 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b1))
             b1.place(x=155, y=12)
 
-            b2 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameFacile(b2))
+            b2 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameFacile(b2))
             b2.place(x=265, y=12)
 
-            b3 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b3))
+            b3 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b3))
             b3.place(x=375, y=12)
 
             # ligne 2
-            b4 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameFacile(b4))
+            b4 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, command=lambda: startGameFacile(b4))
             b4.place(x=155, y=107)
 
-            b5 = tk.Button(game, text=" ", width=13, height=6, bg="#7bb1ef", command=lambda: startGameFacile(b5))
+            b5 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, bg="#7bb1ef", command=lambda: startGameFacile(b5))
             b5.place(x=265, y=107)
 
-            b6 = tk.Button(game, text=" ", width=13, height=6, command=lambda: startGameFacile(b6))
+            b6 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=6, command=lambda: startGameFacile(b6))
             b6.place(x=375, y=107)
 
             # ligne 3
-            b7 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b7))
+            b7 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani' , width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b7))
             b7.place(x=155, y=215)
 
-            b8 = tk.Button(game, text=" ", width=13, height=5, command=lambda: startGameFacile(b8))
+            b8 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, command=lambda: startGameFacile(b8))
             b8.place(x=265, y=215)
 
-            b9 = tk.Button(game, text=" ", width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b9))
+            b9 = tk.Button(game, text=" ",cursor='@cursor/dbz.ani', width=13, height=5, bg="#7bb1ef", command=lambda: startGameFacile(b9))
             b9.place(x=375, y=215)
 
             if playCaseFirst == 1:
@@ -5745,7 +5745,7 @@ app.geometry("+%d+%d" % (x, y))
 app.resizable(False, False)
 
 #cursor
-app.configure(cursor='heart')
+app.configure(cursor='@cursor/mario.cur')
 
 #title
 canvastext = tk.Canvas(app, width=650, height=40, bg="black")
@@ -5773,7 +5773,7 @@ playerShow = tk.StringVar()
 #number of match
 nbMatchLabel = tk.Label(app, text="Nombre de Round:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
 nbMatchLabel.place(x=160, y=120)
-nbMatch = tk.Entry(app, textvariable=nb, font="Helvetica 11 italic bold")
+nbMatch = tk.Entry(app, textvariable=nb, cursor='@cursor/marioType.ani', font="Helvetica 11 italic bold")
 nb.set("1")
 nbMatch.place(x=320, y=120)
 
@@ -5782,7 +5782,7 @@ nbDiffLabel = tk.Label(app, text="Niveau de difficulter:", font="Helvetica 11 it
 nbDiffLabel.place(x=160, y=150)
 
 difflist = ["facile", "moyen", "difficile", "extreme", "cauchemar", "virtuoso"]
-difficulty = tk.Spinbox(app, textvariable=df, from_=0, to=6, values=difflist, state='readonly', font="Helvetica 11 italic bold")
+difficulty = tk.Spinbox(app, textvariable=df, cursor='@cursor/marioBlock.ani',  from_=0, to=6, values=difflist, state='readonly', font="Helvetica 11 italic bold")
 df.set("facile")
 difficulty.place(x=325, y=150)
 
@@ -5840,9 +5840,9 @@ userInfo.geometry("+%d+%d" % (x, y))
 
 #User Label + Entry
 userName = tk.Label(userInfo, text='Pseudo', font=("Helvtica 10"), bg='white')
-entryName = tk.Entry(userInfo, textvariable=collectNameLogin)
+entryName = tk.Entry(userInfo,cursor='@cursor/marioType.ani', textvariable=collectNameLogin)
 userPass = tk.Label(userInfo, text='MotDePasse', font=("Helvtica 10"), bg='white')
-entryPass = tk.Entry(userInfo, show="*", textvariable=collectPassLogin)
+entryPass = tk.Entry(userInfo, show="*",cursor='@cursor/marioType.ani', textvariable=collectPassLogin)
 
 
 # LB LABEL===========================================================================================================
@@ -5850,7 +5850,7 @@ vicLabel = tk.Label(app, width=15, text="⭐MES VICTOIRES⭐", bg='black', fg='y
 vicLabel.place(x='510', y='200')
 
 onlineVicLabel = tk.Label(app, width=15, text="⭐ONLINE TOP 3⭐", bg='black', fg='yellow')
-onlineVicLabel.place(x='20', y='200')
+onlineVicLabel.place(x='20', y='100')
 
 virtuoso = tk.Label(app, width=12, text="VIRTUOSE >", bg='black', fg='DeepSkyBlue2', font="Helvetica 9")
 virtuoso.place(x='490', y='220')
@@ -5865,13 +5865,16 @@ moyen.place(x='490', y='300')
 facile = tk.Label(app, width=12, text="FACILE >", bg='black', fg='DeepSkyBlue2', font="Helvetica 9")
 facile.place(x='490', y='320')
 
+
 #ONLINE LEADERBOARD
-topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP1, bg='black', fg='cyan', font='Helvetica 9')
-topPlayer1.place(x='20', y='225')
-topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP2, bg='black', fg='cyan', font='Helvetica 9')
-topPlayer1.place(x='20', y='250')
-topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP3, bg='black', fg='cyan', font='Helvetica 9')
-topPlayer1.place(x='20', y='275')
+
+
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP1, bg='black', fg='white', font='Helvetica 9')
+topPlayer1.place(x='20', y='125')
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP2, bg='black', fg='white', font='Helvetica 9')
+topPlayer1.place(x='20', y='150')
+topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP3, bg='black', fg='white', font='Helvetica 9')
+topPlayer1.place(x='20', y='175')
 
 infoOnline = tk.Label(app, width=95, text="Pour pouvoir observer/mettre a jour le leaderboard en ligne il vous faut joue une partie! Critere du Leader: nombre de victoire", bg='green', fg='black', font='Times 9')
 infoOnline.place(x="10", y="360")
