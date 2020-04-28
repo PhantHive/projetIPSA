@@ -1,8 +1,8 @@
 {
     "e": {
         "difficile": {
-            "Victoire": 1,
-            "Defaite": 3,
+            "Victoire": 2,
+            "Defaite": 4,
             "Egalite": 0
         },
         "virtuoso": {
@@ -11,7 +11,7 @@
             "Egalite": 0
         },
         "facile": {
-            "Victoire": 118,
+            "Victoire": 124,
             "Defaite": 10,
             "Egalite": 3
         },
@@ -22,8 +22,8 @@
         },
         "extreme": {
             "Victoire": 0,
-            "Defaite": 0,
-            "Egalite": 1
+            "Defaite": 7,
+            "Egalite": 3
         }
     },
     "admin": {
@@ -37,6 +37,32 @@
         "facile": {
             "Victoire": 1,
             "Defaite": 0,
+            "Egalite": 0
+        }
+    },
+    "testerPRO": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 0,
+            "Egalite": 0
+        }
+    },
+    "pseudo": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 1,
+            "Egalite": 0
+        }
+    },
+    "thomas": {
+        "virtuoso": {
+            "Victoire": 0,
+            "Defaite": 1,
+            "Egalite": 0
+        },
+        "facile": {
+            "Victoire": 8,
+            "Defaite": 1,
             "Egalite": 0
         }
     }

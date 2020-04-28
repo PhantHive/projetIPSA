@@ -1,5 +1,6 @@
 #Librairies
 import pymongo
+from multiplayer.multiplayer import multi
 from pymongo import MongoClient
 import tkinter as tk
 import time
@@ -17,11 +18,9 @@ collection = db["connection"]
 collectionScore = db["leaderboard"]
 #online classification
 collectionScore.find({}, {"scoreLB": 1}).limit(100)
-
 #=====================
 
 #Tkinter app
-
 app = tk.Tk()
 app.title("MORPION")
 
@@ -112,7 +111,6 @@ def updateLB():
 
 
     print(lb[0])
-
 
 #trop de probleme a regler sur fonction voiceScore!!!!!
 def voiceScore():
@@ -402,12 +400,14 @@ def voiceScore():
         print("cet utilisateur a deja un score")
         for doc in collectionScore.find({pseudo: {"$exists": True}}):
             oldScore = doc[pseudo]["score"]
+            print(oldScore)
             print("ancien score" + str(oldScore))
             newScore = oldScore + winUser
             print("newscore" + str(newScore))
             collectionScore.update_one({pseudo: {"name": pseudo, "score": oldScore}}, {"$set": {pseudo: {"name": pseudo, "score": newScore}, "scoreLB": newScore, "pseudo": pseudo}})
             print("score bien mise a jour")
     else:
+        print("on creer l utilisateur")
         collectionScore.insert_one({pseudo: { "name": pseudo, "score": winUser}, "scoreLB": winUser, "pseudo": pseudo})
 
     updateLB()
@@ -498,7 +498,6 @@ def confRegister():
         userInfo.update()
         '''
 
-
 def register():
     global name
     global psw
@@ -544,7 +543,6 @@ def exit():
     app.destroy()
     sys.exit()
 #======================
-
 
 #Fonctions
 #==================WIN VERIF + ATTACK
@@ -1752,7 +1750,7 @@ def CloseBoard():
 
 def countdown():
     global click
-    for k in range(10, 0, -1):
+    for k in range(5, 0, -1):
         click = False
         countLabel["text"] = k
         countWait["text"] = "Compte-a-rebours avant prochain round"
@@ -5729,7 +5727,6 @@ def initialisation():
         pygame.mixer.music.play()
         df.set("ERROR NAME")
 
-
 #tkinter custom=====================================================================================================================
 
 app.withdraw() #hide app
@@ -5800,18 +5797,21 @@ plLabel.place(x=10, y=300)
 #Bottom
 matchValidate = tk.Button(app, text="JOUER", font="Helvetica 11 italic bold", command=initialisation, bg='#ff8d00', fg="black")
 matchValidate.place(x=270, y=190)
+
+#callMultiplayeFunc
+multiValidate = tk.Button(app, text="Multi", font="TIMES 11 bold", command=multi, bg='black', fg='#ff8d00')
+multiValidate.place(x=280, y=230)
 #=====================================================================
 
-#LOGIN WINDOW=========================================================
-#variable
+#LOGIN variable
 collectNameLogin = tk.StringVar()
 collectPassLogin = tk.StringVar()
 #===========================
-#onlineLB===
+#onlineLB variable===
 onlineTOP1 = tk.StringVar()
 onlineTOP2 = tk.StringVar()
 onlineTOP3 = tk.StringVar()
-#===
+#===OFFLINE LB variable
 virtuosoScore = tk.IntVar()
 cauchemarScore = tk.IntVar()
 extremeScore = tk.IntVar()
@@ -5831,7 +5831,7 @@ photoLabel = tk.Label(userInfo, image=fontPhotoResize, bg='white')
 userInfo.resizable(False, False)
 
 #===========
-userInfo.update_idletasks()  # Update "requested size" from geometry manager
+userInfo.update_idletasks()  # Update "requested size" from geometry
 
 x = (userInfo.winfo_screenwidth() - userInfo.winfo_reqwidth()) / 2
 y = (userInfo.winfo_screenheight() - userInfo.winfo_reqheight()) / 2
