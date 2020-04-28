@@ -546,7 +546,6 @@ def exit():
 
 #Fonctions
 #==================WIN VERIF + ATTACK
-
 def checkWin():
     global click
     global winBot
@@ -1135,8 +1134,7 @@ def gameOpen(i):
     canvas = tk.Canvas(game, width=700, height=700, relief="raised", background='black')
     canvas.pack()
 
-
-
+    '''
     # Vertical lines
     canvas.create_line(260, 300, 500, -100000, width=10, fill="black")  # vertical line 1
     canvas.create_line(370, 300, 500, -100000, width=10, fill="black")  # vertical line 2
@@ -1152,6 +1150,7 @@ def gameOpen(i):
     # Horizontal lines
     canvas.create_line(150, 7, 480, 7, width=10, fill="black")  # top
     canvas.create_line(146, 305, 485, 305, width=10, fill="black")  # bottom
+    '''
 
     # labels players
 
@@ -1745,6 +1744,10 @@ def gameOpen(i):
         countdownBeforeStart()
         labelStartUser.destroy()
 
+    #loop
+    game.mainloop()
+
+#countdown==============================================
 def CloseBoard():
     game.destroy()
 
@@ -1777,6 +1780,18 @@ def countdownBeforeTurn():
         time.sleep(0.07)
     click = True
 
+def countdownBeforeClose():
+    global click
+
+    for k in range(3, -1, -1):
+        click = False
+        countCloseLabel["text"] = k
+        countClose["text"] = "Compte-a-rebours avant fermeture \n tes donnees ont ete save inchallah"
+        app.update()
+        time.sleep(1)
+#=======================================================
+
+#cauchemar + virtuoso game mode=========================
 def fortissimo():
     global click
     for k in range(1, -1, -1):
@@ -2027,15 +2042,7 @@ def Flash():
     b6.config(bg="black")
     # ================================
 
-def countdownBeforeClose():
-    global click
-
-    for k in range(3, -1, -1):
-        click = False
-        countCloseLabel["text"] = k
-        countClose["text"] = "Compte-a-rebours avant fermeture \n tes donnees ont ete save inchallah"
-        app.update()
-        time.sleep(1)
+#cauchemar + virtuoso game mode=========================
 
 #global settings
 y = "" #sign attribution
@@ -2046,6 +2053,7 @@ winBot = 0
 winUser = 0
 draw = 0
 
+#randomChoice for easy Mode ==> bot choose position randomly
 def randomChoice():
     global i
     global click
@@ -2056,10 +2064,11 @@ def randomChoice():
     if i["text"] == " ":
         i.config(text=y)
         click = True
+        checkWin()
     else:
         randomChoice()
 
-#=======================================GAAME DIFFICULTIES
+#=======================================GAAME DIFFICULTIES===================================================
 def startGameVirtuoso(b):
     global x, y
     global player, playerBot
@@ -5650,9 +5659,9 @@ def startGameFacile(b):
             click = False
             checkWin()
             randomChoice()
-#=====================================
+#============================================================================================================
 
-#INIT
+#INIT=======EVERYTHING=BEGIN=HERE
 def initialisation():
     global gamesNb
     global diffMode
@@ -5734,14 +5743,12 @@ app.update_idletasks()  # Update "requested size" from geometry manager
 app.iconbitmap("./image/icon.ico/")
 app.geometry("650x390")
 
-
+#window position
 x = (app.winfo_screenwidth() - app.winfo_reqwidth()) / 3
 y = (app.winfo_screenheight() - app.winfo_reqheight()) / 3
 app.geometry("+%d+%d" % (x, y))
-
-# This seems to draw the window frame immediately, so only call deiconify()
-# after setting correct window position
-
+#==============
+#disable user possibility to change the size of the window
 app.resizable(False, False)
 
 #cursor
@@ -5754,12 +5761,11 @@ canvastext.create_text(320, 20,fill="#ff8d00",font="Helvetica 26 italic bold",
                         text="MORPIONNE")
 #=========
 
-#image
-
+#image=background
 img = PIL.ImageTk.PhotoImage(PIL.Image.open("./image/background.jpg"))
 background = tk.Label(app, image=img)
 background.pack(side="bottom", fill="both", expand="yes")
-
+#================================================================================================================================
 
 
 #EntryVariable
@@ -5767,9 +5773,6 @@ nb = tk.StringVar() #nombre de round
 df = tk.StringVar() #difficulte
 playerShow = tk.StringVar()
 #Labels==============================================================
-#TITRE
-
-
 #number of match
 nbMatchLabel = tk.Label(app, text="Nombre de Round:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
 nbMatchLabel.place(x=160, y=120)
@@ -5781,6 +5784,7 @@ nbMatch.place(x=320, y=120)
 nbDiffLabel = tk.Label(app, text="Niveau de difficulter:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
 nbDiffLabel.place(x=160, y=150)
 
+#SPINBOX
 difflist = ["facile", "moyen", "difficile", "extreme", "cauchemar", "virtuoso"]
 difficulty = tk.Spinbox(app, textvariable=df, cursor='@cursor/marioBlock.ani',  from_=0, to=6, values=difflist, state='readonly', font="Helvetica 11 italic bold")
 df.set("facile")
@@ -5802,7 +5806,6 @@ matchValidate.place(x=270, y=190)
 multiValidate = tk.Button(app, text="Multi", font="TIMES 11 bold", command=multi, bg='black', fg='#ff8d00')
 multiValidate.place(x=280, y=230)
 #=====================================================================
-
 #LOGIN variable
 collectNameLogin = tk.StringVar()
 collectPassLogin = tk.StringVar()
@@ -5819,6 +5822,7 @@ difficileScore = tk.IntVar()
 moyenScore = tk.IntVar()
 facileScore = tk.IntVar()
 #===============================
+
 #===LOGIN WINDOW====
 userInfo = tk.Toplevel()
 userInfo.protocol("WM_DELETE_WINDOW", closeRegistration)
@@ -5867,8 +5871,6 @@ facile.place(x='490', y='320')
 
 
 #ONLINE LEADERBOARD
-
-
 topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP1, bg='black', fg='white', font='Helvetica 9')
 topPlayer1.place(x='20', y='125')
 topPlayer1 = tk.Label(app, width=15, textvariable=onlineTOP2, bg='black', fg='white', font='Helvetica 9')
@@ -5878,6 +5880,7 @@ topPlayer1.place(x='20', y='175')
 
 infoOnline = tk.Label(app, width=95, text="Pour pouvoir observer/mettre a jour le leaderboard en ligne il vous faut joue une partie! Critere du Leader: nombre de victoire", bg='green', fg='black', font='Times 9')
 infoOnline.place(x="10", y="360")
+
 #====OFFLINE RESULTS
 virtuoseLabel = tk.Label(app, width=7, textvariable=virtuosoScore, bg='black', fg='white', font="Helvetica 9")
 virtuoseLabel.place(x='580', y='220')
@@ -5916,3 +5919,17 @@ buttonCancel.pack()
 
 #Tkinter loop
 app.mainloop()
+userInfo.mainloop()
+
+
+#INFORMATIONS
+'''
+IPSA PROJECT 2020
+Program a Tic tac toe
+Game title: MORPIONNE
+Description: make an original tic tac toe
+Group Member: Zakaria, Talaat, Thomas
+Class: 1PR2
+
+other informations on README.md
+'''

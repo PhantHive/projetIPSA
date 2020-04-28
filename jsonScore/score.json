@@ -11,9 +11,9 @@
             "Egalite": 0
         },
         "facile": {
-            "Victoire": 130,
-            "Defaite": 10,
-            "Egalite": 3
+            "Victoire": 134,
+            "Defaite": 12,
+            "Egalite": 4
         },
         "moyen": {
             "Victoire": 1,
