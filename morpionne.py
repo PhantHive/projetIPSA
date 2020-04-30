@@ -24,6 +24,77 @@ collectionScore.find({}, {"scoreLB": 1}).limit(100)
 app = tk.Tk()
 app.title("MORPION")
 
+
+#simple function showing first top 50 players online
+def topTen():
+    print("ok")
+
+    top50 = tk.Toplevel()
+
+    top50.geometry("300x340")
+    x = (top50.winfo_screenwidth() - top50.winfo_reqwidth()) / 6.4
+    y = (top50.winfo_screenheight() - top50.winfo_reqheight()) / 2.7
+    top50.geometry("+%d+%d" % (x, y))
+
+    top50.title("TOP 10")
+    top50.iconbitmap('./image/iconeAPP.ico')
+    top50.resizable(False, False)
+
+    top50.config(cursor='@cursor/marioLeaderboard.ani')
+
+    img = PIL.ImageTk.PhotoImage(PIL.Image.open("./image/blaze.png"))
+    background = tk.Label(top50, image=img)
+    background.pack(side="bottom", fill="both", expand="yes")
+
+
+    lb = []
+    collectDATA = collectionScore.find({})
+    for dic in collectDATA:
+        a = str(dic["scoreLB"])
+        b = dic["pseudo"]
+        ab = a + " by " + b
+        lb.append(ab)
+
+    lb.sort(key=lambda x: int(x.split(" by ")[0]))
+    lb.reverse()
+
+    listScore = [i.split(" by ")[0] for i in lb]
+    listPseudo = [i.split(" by ")[1] for i in lb]
+
+    if showTopTen:
+        try:
+            i = 1 #compteur
+            j = 10 #pixel
+            for numbers in listScore:
+                if i < 11:
+                    a = "Numero " + str(i)
+                    lbNb = tk.Label(top50, bg='black', fg='yellow', font='Times', text=a)
+                    labelScore = tk.Label(top50, bg='black', fg='SeaGreen1', font='Times', text=numbers)
+                    lbNb.place(x=20, y=j)
+                    labelScore.place(x=105, y=j)
+                    i += 1
+                    j += 35
+                else:
+                    break
+
+            k = 1 #compteur
+            l = 10 #pixel
+            for psd in listPseudo:
+
+                if k < 11:
+                    labelPseudo = tk.Label(top50,  bg='black', fg='cyan3', font='Times', text=psd)
+                    labelPseudo.place(x=160, y=l)
+                    k += 1
+                    l += 35
+                else:
+                    break
+        except:
+            top50.destroy()
+    else:
+        messagebox.showinfo("Joue et reviens", "Joue une partie afin d'actualiser le tableau top10")
+
+    top50.mainloop()
+
 def updateLB():
     # ===
     global numberThree, numberTwo, numberOne
@@ -112,10 +183,12 @@ def updateLB():
 
     print(lb[0])
 
+
 #trop de probleme a regler sur fonction voiceScore!!!!!
 def voiceScore():
     global frames
     global pseudo
+    global showTopTen
 
     pygame.mixer.init()
     L = ['./sound/voice/clash/clash.ogg', './sound/voice/clash/clash2.ogg', './sound/voice/clash/clash3.ogg', './sound/voice/clash/clash4.ogg', './sound/voice/clash/clash5.ogg']
@@ -410,6 +483,7 @@ def voiceScore():
         print("on creer l utilisateur")
         collectionScore.insert_one({pseudo: { "name": pseudo, "score": winUser}, "scoreLB": winUser, "pseudo": pseudo})
 
+    showTopTen = True
     updateLB()
 
 #=====================FONCTION LOGIN-REGISTER
@@ -477,8 +551,6 @@ def confRegister():
         tk.messagebox.showinfo("success", "Compte a bien ete cree!")
         registerWindow.destroy()
         return
-
-
 
         '''
         print("test")
@@ -2049,6 +2121,7 @@ y = "" #sign attribution
 player = []
 playerBot = []
 click = True
+showTopTen = False
 winBot = 0
 winUser = 0
 draw = 0
@@ -5805,6 +5878,12 @@ matchValidate.place(x=270, y=190)
 #callMultiplayeFunc
 multiValidate = tk.Button(app, text="Multi", font="TIMES 11 bold", command=multi, bg='black', fg='#ff8d00')
 multiValidate.place(x=280, y=230)
+
+#MODE SPECIAL
+magicPic = tk.PhotoImage(file='./image/magic.png')
+magic = magicPic.subsample(4, 4)
+magicPionne = tk.Button(app, text="MagicPionne", image=magic, compound ='right', font="TIMES 11 bold", bg='black', fg='white')
+magicPionne.place(x=225, y=270)
 #=====================================================================
 #LOGIN variable
 collectNameLogin = tk.StringVar()
@@ -5881,6 +5960,8 @@ topPlayer1.place(x='20', y='175')
 infoOnline = tk.Label(app, width=95, text="Pour pouvoir observer/mettre a jour le leaderboard en ligne il vous faut joue une partie! Critere du Leader: nombre de victoire", bg='green', fg='black', font='Times 9')
 infoOnline.place(x="10", y="360")
 
+showMore = tk.Button(app, width=15, text="VOIR PLUS", bg='black', fg='ORANGE', font="Helvetica 9", command=topTen)
+showMore.place(x="20", y='220')
 #====OFFLINE RESULTS
 virtuoseLabel = tk.Label(app, width=7, textvariable=virtuosoScore, bg='black', fg='white', font="Helvetica 9")
 virtuoseLabel.place(x='580', y='220')

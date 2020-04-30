@@ -1,29 +1,34 @@
 {
     "e": {
         "difficile": {
-            "Victoire": 2,
+            "Victoire": 4,
             "Defaite": 4,
             "Egalite": 0
         },
         "virtuoso": {
-            "Victoire": 1,
-            "Defaite": 29,
+            "Victoire": 2,
+            "Defaite": 32,
             "Egalite": 0
         },
         "facile": {
-            "Victoire": 134,
-            "Defaite": 12,
-            "Egalite": 4
+            "Victoire": 147,
+            "Defaite": 16,
+            "Egalite": 5
         },
         "moyen": {
-            "Victoire": 1,
-            "Defaite": 0,
-            "Egalite": 0
+            "Victoire": 3,
+            "Defaite": 1,
+            "Egalite": 1
         },
         "extreme": {
+            "Victoire": 3,
+            "Defaite": 8,
+            "Egalite": 7
+        },
+        "cauchemar": {
             "Victoire": 0,
-            "Defaite": 7,
-            "Egalite": 3
+            "Defaite": 0,
+            "Egalite": 1
         }
     },
     "admin": {
@@ -63,6 +68,20 @@
         "facile": {
             "Victoire": 8,
             "Defaite": 1,
+            "Egalite": 0
+        }
+    },
+    "zizicopter": {
+        "facile": {
+            "Victoire": 5,
+            "Defaite": 0,
+            "Egalite": 0
+        }
+    },
+    "random": {
+        "facile": {
+            "Victoire": 1,
+            "Defaite": 0,
             "Egalite": 0
         }
     }

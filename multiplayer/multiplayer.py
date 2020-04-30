@@ -1,10 +1,15 @@
 import tkinter as tk
 import random
-import PIL.Image, PIL.ImageTk
+
+import PIL
+from PIL import ImageTk, Image
 
 #game variable
 click = True
 canPlay = True
+
+
+
 
 def restartGame():
     global canPlay
@@ -181,13 +186,14 @@ def multi():
     global b7
     global b8
     global b9
+    global img
 
     multiApp = tk.Tk()
     multiApp.geometry("500x500")
     # tkinter custom
 
 
-    whoStart = random.randrange(1,3)
+    whoStart = random.randrange(1, 3)
 
     if whoStart == 1:
         b1 = tk.Button(multiApp, text=" ", width=13, height=5, bg="white", activebackground="black",
@@ -272,9 +278,6 @@ def multi():
     replay = tk.Button(multiApp, text="Rejouer", command=restartGame)
     replay.place(x="20", y="300")
 
-    img = PIL.ImageTk.PhotoImage(PIL.Image.open("blaze.png"))
-    background = tk.Label(multiApp, image=img)
-    background.pack(side="bottom", fill="both", expand="yes")
 
     multiApp.mainloop()
 

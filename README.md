@@ -48,7 +48,9 @@ avec ces super pouvoirs.
 
 ###### Repartition des taches:
 > Responsable niveau facile/extreme => Talaat
+
 > Responsable niveau moyen/cauchemar => Thomas
+
 > Responsable niveau difficile/virtuose => Zakaria
 
 > Responsable tri des donnees => Principalement Zakaria
