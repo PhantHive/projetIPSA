@@ -10,6 +10,7 @@ import sys
 import json
 import pygame.mixer, pygame.mixer_music
 from tkinter import messagebox
+from magicpionne.main import createBoard
 
 #db===================
 cluster = MongoClient("mongodb+srv://phanthive:morpionne@cluster0-pll8o.mongodb.net/test?retryWrites=true&w=majority")
@@ -5882,7 +5883,7 @@ multiValidate.place(x=280, y=230)
 #MODE SPECIAL
 magicPic = tk.PhotoImage(file='./image/magic.png')
 magic = magicPic.subsample(4, 4)
-magicPionne = tk.Button(app, text="MagicPionne", image=magic, compound ='right', font="TIMES 11 bold", bg='black', fg='white')
+magicPionne = tk.Button(app, text="MagicPionne", image=magic, compound ='right', font="TIMES 11 bold", bg='black', fg='white', command=createBoard)
 magicPionne.place(x=225, y=270)
 #=====================================================================
 #LOGIN variable
