@@ -1227,11 +1227,6 @@ def gameOpen(i):
 
     # labels players
 
-    label_player1 = tk.Label(game, text="Joueur 1: X")
-    label_player1.place(x=0, y=200)
-
-    label_player1 = tk.Label(game, text="Joueur 2: O")
-    label_player1.place(x=500, y=200)
 
     gif = tk.Canvas(game)
     gif.place(x=750, y=600)
@@ -1482,7 +1477,7 @@ def gameOpen(i):
         countCloseLabel.place(x=320, y=390)
 
         #WHo start?
-        labelStartUser = tk.Label(game, text='TU COMMENCES!', font=("Helvetica 26 italic bold underline"), bg='black', fg='DarkOrchid3')
+        labelStartUser = tk.Label(game, text='TU COMMENCES!', font=("Helvetica 26 italic bold underline"), bg='black', fg='yellow')
         labelStartUser.place(x=130, y=450)
         countdownBeforeStart()
         labelStartUser.destroy()
@@ -1811,7 +1806,7 @@ def gameOpen(i):
         countCloseLabel = tk.Label(game, bg='black', fg='firebrick2', font=("Times 26 bold"))
         countCloseLabel.place(x=320, y=390)
         #Who start?
-        labelStartUser = tk.Label(game, text='LE BOT A COMMENCE! A TOI', font=("Helvetica 26 italic bold underline"), bg='black', fg='DarkOrchid3')
+        labelStartUser = tk.Label(game, text='LE BOT A COMMENCE! A TOI', font=("Helvetica 26 italic bold underline"), bg='black', fg='yellow')
         labelStartUser.place(x=90, y=450)
 
         countdownBeforeStart()
@@ -1859,7 +1854,7 @@ def countdownBeforeClose():
     for k in range(3, -1, -1):
         click = False
         countCloseLabel["text"] = k
-        countClose["text"] = "Compte-a-rebours avant fermeture \n tes donnees ont ete save inchallah"
+        countClose["text"] = "Compte-a-rebours avant fermeture"
         app.update()
         time.sleep(1)
 #=======================================================
@@ -5855,7 +5850,7 @@ nb.set("1")
 nbMatch.place(x=320, y=120)
 
 #Difficulty status
-nbDiffLabel = tk.Label(app, text="Niveau de difficulter:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
+nbDiffLabel = tk.Label(app, text="Niveau de difficultées:", font="Helvetica 11 italic bold", bg='black', fg="#ff8d00")
 nbDiffLabel.place(x=160, y=150)
 
 #SPINBOX
@@ -5883,7 +5878,7 @@ multiValidate.place(x=280, y=230)
 #MODE SPECIAL
 magicPic = tk.PhotoImage(file='./image/magic.png')
 magic = magicPic.subsample(4, 4)
-magicPionne = tk.Button(app, text="MagicPionne", image=magic, compound ='right', font="TIMES 11 bold", bg='black', fg='white', command=createBoard)
+magicPionne = tk.Button(app, text="MagicPionne", image=magic, compound ='right', font="TIMES 11 bold", bg='black', fg='white', command=lambda: createBoard(nm))
 magicPionne.place(x=225, y=270)
 #=====================================================================
 #LOGIN variable

@@ -36,15 +36,13 @@ pour l'instant ce leaderboard prend en compte que le nombre de victoire (tout mo
 13.`Customisation de nos interfaces en ajoutant des curseurs custom`
 
 ###### Objectifs a atteindre si possible:
-* mettre en place un leaderboard plus grand (top100 avec scrollbar sur un toplevel)
+*mettre en place un morpion 3x3x9
+* mettre en place un leaderboard plus grand (top50 avec scrollbar sur un toplevel)
 * Mettre en place un mode chrono
-* Modifier le multi afin de rajouter un systeme de socket pour un mode en ligne
 * Ajoute une collection (argent) afin de rajouter un mode SuperPouvoir permettant de jouer sur un morpion 3x3x9
 avec ces super pouvoirs.
 
-###### idees folles
-* Rajoute un mode morpion quantique (niveauFolie +++++)
-* mode superpouvoir en en ligne (niveauFolie +++)
+
 
 ###### Repartition des taches:
 > Responsable niveau facile/extreme => Talaat
